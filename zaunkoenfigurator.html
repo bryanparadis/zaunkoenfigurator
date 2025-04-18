@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://zaunkoenig.co/i/m3k -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="robots" content="none">
+    <title>Zaunkoenig manual for the M3K</title>
+    <link rel="prefetch" href="https://zaunkoenig.co/" as="document">
+    <link rel="icon" href="https://zaunkoenig.co/favicon.ico" sizes="any">
+    <link rel="icon" href="https://zaunkoenig.co/favicon.svg" type="image/svg+xml">
+    <style>
+      body {
+        margin: 0;
+        max-width: 864px;
+        box-sizing: border-box;
+        font-family: IBM Plex Sans, Helvetica, sans-serif;
+        line-height: 1.5;
+        color: #f0f0f0;
+        background: #000;
+        overflow-x: hidden;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      footer {
+        padding-top: 15vh;
+      }
+      nav {
+        text-align: center;
+        margin-top: 20vh;
+      }
+      .logobild,
+      .logolink {
+        fill: #f0f0f0;
+        display: block;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 2em;
+        margin-bottom: 1em;
+      }
+      blockquote {
+        font-style: italic;
+        display: block;
+        padding: 1em 0 1em 1em;
+      }
+      blockquote p + p,
+      blockquote p,
+      blockquote + p,
+      h1,
+      h2,
+      h3,
+      h4,
+      header + p,
+      h2 + p,
+      h3 + p,
+      h4 + p,
+      p + p {
+        margin-top: 1em;
+      }
+      h1 + p {
+        margin-top: 0.67em;
+      }
+      p + h1,
+      p + h2,
+      p + h3,
+      p + h4,
+      ul + h1,
+      ul + h2,
+      ul + h3,
+      ul + h4,
+      ol + h1,
+      ol + h2,
+      ol + h3,
+      ol + h4 {
+        margin-top: 2em;
+      }
+      h1 + h2,
+      h2 + h3,
+      h3 + h4 {
+        margin-top: 1em;
+      }
+      /*The following three lines of code are required to make the margin between <p> elements following <h4> elements smaller*/
+      h4 + p {
+        margin-top: -1em;
+      }
+      img + p,
+      picture + p,
+      img + h1,
+      picture + h1,
+      img + h2,
+      picture + h2,
+      img + h3,
+      picture + h3,
+      img + h4,
+      picture + h4 {
+        margin-top: 2em;
+      }
+      .kleingedrucktes {
+        color: #999;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      /*for-small-phones*/
+      .logobild,
+      .logolink {
+        height: 38px;
+      }
+      h1 {
+        font-size: 50px;
+        line-height: 1.1;
+      }
+      h2 {
+        font-size: 22px;
+        line-height: 1.3;
+      }
+      h3 {
+        font-size: 18px;
+        line-height: 1.7;
+      }
+      h4,
+      p,
+      ol,
+      ul,
+      blockquote,
+      time,
+      span,
+      address,
+      nav,
+      .button,
+      .form__input,
+      .form__input-and-button,
+      .form__button {
+        font-size: 17px;
+        line-height: 1.7;
+      }
+      /*for-slightly-larger-phone-only*/
+      @media screen and (min-width: 415px) {
+        h1 {
+          font-size: 60px;
+          line-height: 1.1;
+        }
+        h2 {
+          font-size: 24px;
+          line-height: 1.3;
+        }
+      }
+      /*for-phone-only*/
+      @media screen and (min-width: 667px) {
+        .kleingedrucktes {
+          font-size: 15px;
+          line-height: 1.3;
+        }
+        h1 {
+          font-size: 65px;
+          line-height: 1.1;
+        }
+        h2 {
+          font-size: 28px;
+          line-height: 1.3;
+        }
+        h3 {
+          font-size: 19px;
+          line-height: 1.7;
+        }
+        h4,
+        p,
+        ol,
+        ul,
+        blockquote,
+        time,
+        span,
+        address,
+        nav,
+        .button,
+        .form__input,
+        .form__input-and-button,
+        .form__button {
+          font-size: 18px;
+          line-height: 1.7;
+        }
+      }
+      /*for-tablet-portrait-up*/
+      @media screen and (min-width: 768px) {
+        .kleingedrucktes {
+          font-size: 17px;
+          line-height: 1.5;
+        }
+        .logobild,
+        .logolink {
+          height: 48px;
+        }
+        h1 {
+          font-size: 70px;
+          line-height: 1.1;
+        }
+        h2 {
+          font-size: 36px;
+          line-height: 1.3333333333;
+        }
+        h3 {
+          font-size: 21px;
+          line-height: 1.7;
+        }
+        h4,
+        p,
+        ol,
+        ul,
+        blockquote,
+        time,
+        span,
+        address,
+        nav,
+        .button,
+        .form__input,
+        .form__input-and-button,
+        .form__button {
+          font-size: 20px;
+          line-height: 1.7;
+        }
+      }
+      /*for-tablet-landscape-up*/
+      @media screen and (min-width: 864px) {
+        .kleingedrucktes {
+          font-size: 17px;
+          line-height: 1.6;
+        }
+        .logobild,
+        .logolink {
+          height: 50px;
+        }
+        h3 {
+          font-size: 22px;
+          line-height: 1.75;
+        }
+        h4,
+        p,
+        ol,
+        ul,
+        blockquote,
+        time,
+        span,
+        address,
+        nav,
+        .button,
+        .form__input,
+        .form__input-and-button,
+        .form__button {
+          font-size: 21px;
+          line-height: 1.75;
+        }
+      }
+      /*for-desktop-up*/
+      @media screen and (min-width: 1184px) {
+        .kleingedrucktes {
+          font-size: 18px;
+          line-height: 1.6;
+        }
+        .logobild,
+        .logolink {
+          height: 50px;
+        }
+        h3 {
+          font-size: 23px;
+          line-height: 1.8;
+        }
+        h4,
+        p,
+        ol,
+        ul,
+        blockquote,
+        time,
+        span,
+        address,
+        nav,
+        .button,
+        .form__input,
+        .form__input-and-button,
+        .form__button {
+          font-size: 22px;
+          line-height: 1.8;
+        }
+      }
+      /*for-big-desktop-up*/
+      @media screen and (min-width: 1800px) {
+        body {
+          max-width: none;
+          max-width: 982px;
+        }
+        .kleingedrucktes {
+          font-size: 18px;
+          line-height: 1.65;
+        }
+        .logobild,
+        .logolink {
+          width: 46px;
+        }
+        h1 {
+          font-size: 75px;
+          line-height: 1.2;
+        }
+        h2 {
+          font-size: 40px;
+          line-height: 1.5;
+        }
+        h3 {
+          font-size: 25px;
+          line-height: 1.9;
+        }
+        h4,
+        p,
+        ol,
+        ul,
+        blockquote,
+        time,
+        span,
+        address,
+        nav,
+        .button,
+        .form__input,
+        .form__input-and-button,
+        .form__button {
+          font-size: 24px;
+          line-height: 1.85;
+        }
+      }
+      /*CSS just for blog.html*/
+      header + article,
+      article + article {
+        margin-top: 7rem;
+      }
+      /*CSS just for blog articles*/
+      header > h1 {
+        margin-bottom: 32px;
+      }
+      address {
+        display: inline;
+      }
+      ol,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      ol li,
+      ul li {
+        margin-left: 1.5em;
+        padding-left: 0;
+      }
+      li > ul {
+        margin-top: 0;
+      }
+      /*CSS for newsletter opt-in*/
+      html {
+        cursor: default;
+      }
+      .container {
+        margin: 48px 0;
+      }
+      @media only screen and (min-width: 768px) {
+        .container {
+          margin: 64px 0;
+        }
+      }
+      @media only screen and (min-width: 768px) {
+        .container__text p + p {
+          margin: 32px 0;
+        }
+      }
+      button,
+      input,
+      select,
+      textarea {
+        background-color: transparent;
+        border-style: none;
+        color: inherit;
+        font-size: 1em;
+        margin: 0;
+      }
+      button,
+      input {
+        overflow: visible;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      html [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        appearance: button;
+      }
+      ::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      :-moz-focusring {
+        outline: 1px dotted ButtonText;
+      }
+      fieldset {
+        border: 1px solid #535353;
+        margin: 0 2px;
+        padding: 0.35em 0.625em 0.75em;
+      }
+      legend {
+        display: table;
+        max-width: 100%;
+        padding: 0;
+        white-space: normal;
+      }
+      textarea {
+        overflow: auto;
+        resize: vertical;
+      }
+      ::-webkit-input-placeholder {
+        color: #a6a6a6;
+        opacity: 0.54;
+      }
+      [aria-busy="true"] {
+        cursor: progress;
+      }
+      [aria-controls] {
+        cursor: pointer;
+      }
+      [aria-disabled] {
+        cursor: default;
+      }
+      a,
+      button,
+      input,
+      select,
+      textarea,
+      [tabindex] {
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+      }
+      button:hover,
+      button:focus,
+      input:hover,
+      input:focus {
+        outline: 0;
+        transition: 0.2s ease-in-out;
+      }
+      .button {
+        display: inline;
+        padding: 11px 12px;
+        width: auto;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        background: #f0f0f0;
+        border: 1px solid #009ec9;
+        color: #f0f0f0;
+      }
+      ::-webkit-input-placeholder {
+        color: #a6a6a6;
+      }
+      :-moz-placeholder {
+        color: #a6a6a6;
+      }
+      ::-moz-placeholder {
+        color: #a6a6a6;
+      }
+      :-ms-input-placeholder {
+        color: #a6a6a6;
+      }
+      @media screen and (min-width: 768px) {
+        .button {
+          padding: 15px 16px;
+        }
+      }
+      .form__button:hover,
+      .form__button:focus {
+        background-color: #4dc9ff;
+        border: 1px solid #4dc9ff;
+        color: #000;
+        transition: 0.2s ease-in-out;
+      }
+      .button--full-width {
+        display: block;
+        width: 100%;
+      }
+      .form__input,
+      .form__button {
+        padding: 11px 16px;
+      }
+      @media screen and (min-width: 768px) {
+        .form__input,
+        .form__button {
+          padding: 15px 16px;
+        }
+      }
+      .form__input {
+        appearance: none;
+        border-radius: 0;
+        border: 1px solid #535353;
+        background: #333;
+        color: #f0f0f0;
+        opacity: 0.7;
+      }
+      .form__button {
+        cursor: pointer;
+        background: #009ec9;
+        border: 1px solid #009ec9;
+        color: #000;
+      }
+      .form__input-and-button {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      @media screen and (min-width: 414px) {
+        .form__input-and-button {
+          width: auto;
+          flex-wrap: nowrap;
+        }
+      }
+      .form__input-and-button .form__input {
+        width: 100%;
+      }
+      .form__input-and-button .form__button {
+        width: 100%;
+        margin: -1px 0 0;
+      }
+      @media screen and (min-width: 414px) {
+        .form__input-and-button .form__button {
+          width: auto;
+          margin: 0 0 0 -1px;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        .form__input-and-button .form__button {
+          min-width: 160px;
+        }
+      }
+      /*Images and video*/
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      video {
+        display: block;
+        object-fit: cover;
+        width: 100%;
+      }
+      /*Link + focus styling*/
+      a:link {
+        color: #0097d8;
+        text-decoration: none;
+      }
+      h2 a:link,
+      time ~ p a:link,
+      nav a:link {
+        color: #f0f0f0;
+      }
+      a:visited {
+        color: #0097d8;
+      }
+      h2 a:visited,
+      time ~ p a:visited,
+      nav a:visited {
+        color: #f0f0f0;
+      }
+      a:hover,
+      a:focus {
+        color: #00b2ff !important;
+        outline: none;
+        transition: 0.2s ease-in-out;
+      }
+      .logolink:focus .logobild,
+      .logolink:hover .logobild {
+        fill: #00b2ff;
+      }
+
+      /* Config Styles */
+      main {
+        width: 100%;
+      }
+
+      article {
+        width: 100%;
+      }
+
+      button {
+        border: 2px;
+        border-color: white;
+        border-style: solid;
+      }
+
+      table {
+       width: 100%; 
+      }
+
+      tr {
+        width: 100%;
+      }
+
+      td.left {
+        width: 20%
+      }
+
+      td.right {
+        width: 80%;
+        text-align: right;
+      }
+
+      select {
+        outline: none;
+        background: black;
+      }
+
+      input#deviceCPIRange {
+        vertical-align: middle;
+        width: 80%;
+      }
+
+      input#deviceCPIText {
+        width:10%;
+        vertical-align: middle;
+        text-align: right;
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <article>
+        <h1>Zaunkoenfigurator</h1>
+            <button id="connect" onclick=deviceConnect()>Connect</button>
+            <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
+            <div id="deviceContainer">
+            <table>
+			        <tr>
+                <td class="left">
+                  Polling Rate
+                </td>
+				        <td class="right">
+		              <select id="pollingRate">
+                    <option value=0>8000Hz</option>
+                    <option value=1>4000Hz</option>
+                    <option value=2>2000Hz</option>
+                    <option value=3>1000Hz</option>
+		              </select>
+                </td>
+              </tr>
+			        <tr>
+                <td class="left">
+                  Lift Off Distance
+                </td>
+				        <td class="right">
+		              <select id="liftOffDistance">
+                    <option value=0>1mm</option>
+                    <option selected value=1>2mm</option>
+                    <option value=2>3mm</option>
+		              </select>
+                </td>
+              </tr>
+			        <tr>
+                <td class="left">
+                  Angle Snapping
+                </td>
+				        <td class="right">
+		              <select id="deviceAngleSnapping">
+                    <option value=0>Off</option>
+                    <option value=1>On</option>
+		              </select>
+                </td>
+              </tr>
+			        <tr>
+                <td class="left">
+                  CPI
+                </td>
+				        <td class="right">
+                  <input id="deviceCPIRange" type="range" min="50" max="20000" step="50" value="800">
+                  <input id="deviceCPIText" type="text" value="800">
+                </td>
+              </tr>
+	      <tr>
+                <td class="left">
+                  USB Speed
+                </td>
+				        <td class="right">
+		              <select id="deviceUSBSpeed">
+                    <option value=1>High-Speed</option>
+                    <option value=0>Full-Speed</option>
+		              </select>
+                </td>
+              </tr>
+	      <tr>
+                <td class="left">
+                  Swap LMB & RMB
+                </td>
+				        <td class="right">
+		              <select id="deviceBtnSwap">
+                    <option value=0>Off</option>
+                    <option value=1>On</option>
+		              </select>
+                </td>
+              </tr>
+            </table>
+              <button onclick=apply()>Apply</button>
+              <button onclick=resetToDefaults()>Reset to Defaults</button>
+            </div>
+      </article>
+    </main>
+    <script>
+      let device = null;
+      let config = null;
+      
+      updateDeviceContainerVisibility();
+
+      async function apply() {
+        // Get values
+
+        // Validate
+
+        // Write Config
+
+      }
+
+      async function resetToDefaults() {
+        // Reset form to defaults
+      }
+
+
+      /**
+       * Parses a 16-bit mouse configuration bitfield into its components.
+       * @param {number} config - The 16-bit configuration value (0 to 65535).
+       * @returns {Object} An object containing the parsed configuration fields.
+       */
+      function parseMouseConfig(config) {
+          // Ensure the input is a 16-bit unsigned integer
+          config = config & 0xFFFF;
+
+          // Define bitfield positions and masks (translated from C #defines)
+          const CONFIG_ANGLE_SNAP_ON = 1 << 14; // 0x4000
+          const CONFIG_HS_USB = 1 << 13;        // 0x2000
+          const CONFIG_INTERVAL_Pos = 11;
+          const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos; // 0x1800
+          const CONFIG_LOD_Pos = 9;
+          const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;           // 0x0600
+          const CONFIG_DPI_Pos = 0;
+          const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;          // 0x01FF
+
+          // Extract each field using bitwise operations
+          const angleSnapOn = (config & CONFIG_ANGLE_SNAP_ON) !== 0; // Boolean: true if bit 14 is set
+          const hsUsb = (config & CONFIG_HS_USB) !== 0;             // Boolean: true if bit 13 is set
+          const interval = (config & CONFIG_INTERVAL_Msk) >> CONFIG_INTERVAL_Pos; // 2 bits: 0 to 3
+          const lod = (config & CONFIG_LOD_Msk) >> CONFIG_LOD_Pos;  // 2 bits: 0 to 3
+          const dpi = (config & CONFIG_DPI_Msk) >> CONFIG_DPI_Pos;  // 9 bits: 0 to 511
+
+          // Return the parsed values as an object
+          return {
+              angleSnapOn,  // Boolean: true if angle snapping is enabled
+              hsUsb,        // Boolean: true if High-Speed USB is enabled
+              interval,     // Number: 0 to 3 (polling interval setting)
+              lod,          // Number: 0 to 3 (Lift-Off Distance setting)
+              dpi           // Number: 0 to 511 (DPI setting)
+          };
+      }
+
+      /**
+       * Builds a 16-bit mouse configuration bitfield from its components.
+       * @param {Object} configObj - The configuration object with fields.
+       * @param {boolean} configObj.angleSnapOn - Angle snapping enabled (bit 14).
+       * @param {boolean} configObj.hsUsb - High-Speed USB enabled (bit 13).
+       * @param {number} configObj.interval - Polling interval setting (0 to 3, bits 11-12).
+       * @param {number} configObj.lod - Lift-Off Distance setting (0 to 3, bits 9-10).
+       * @param {number} configObj.dpi - DPI setting (0 to 511, bits 0-8).
+       * @returns {number} The 16-bit configuration value (0 to 65535).
+       */
+      function buildMouseConfig({ angleSnapOn, hsUsb, interval, lod, dpi }) {
+          // Validate inputs
+          if (typeof angleSnapOn !== 'boolean') throw new Error('angleSnapOn must be a boolean');
+          if (typeof hsUsb !== 'boolean') throw new Error('hsUsb must be a boolean');
+          if (!Number.isInteger(interval) || interval < 0 || interval > 3) throw new Error('interval must be an integer between 0 and 3');
+          if (!Number.isInteger(lod) || lod < 0 || lod > 3) throw new Error('lod must be an integer between 0 and 3');
+          if (!Number.isInteger(dpi) || dpi < 0 || dpi > 511) throw new Error('dpi must be an integer between 0 and 511');
+
+          // Define bitfield positions and masks (same as parseMouseConfig)
+          const CONFIG_ANGLE_SNAP_ON = 1 << 14; // 0x4000
+          const CONFIG_HS_USB = 1 << 13;        // 0x2000
+          const CONFIG_INTERVAL_Pos = 11;
+          const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos; // 0x1800
+          const CONFIG_LOD_Pos = 9;
+          const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;           // 0x0600
+          const CONFIG_DPI_Pos = 0;
+          const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;          // 0x01FF
+
+          // Start with a zeroed 16-bit value
+          let config = 0;
+
+          // Set each field using bitwise operations
+          if (angleSnapOn) config |= CONFIG_ANGLE_SNAP_ON; // Set bit 14
+          if (hsUsb) config |= CONFIG_HS_USB;              // Set bit 13
+          config |= (interval << CONFIG_INTERVAL_Pos) & CONFIG_INTERVAL_Msk; // Set bits 11-12
+          config |= (lod << CONFIG_LOD_Pos) & CONFIG_LOD_Msk;               // Set bits 9-10
+          config |= (dpi << CONFIG_DPI_Pos) & CONFIG_DPI_Msk;               // Set bits 0-8
+
+          // Ensure the result is a 16-bit unsigned integer
+          return config & 0xFFFF;
+      }
+
+      async function deviceConnect() {
+        try {
+          const devices = await navigator.hid.requestDevice({
+            filters: [{ 
+              vendorId:  0x0483, // STMicroelectronics VID
+              productId: 0xA462 // M3K
+            }]});
+          device = devices[0];
+          if (!device) return;
+
+          await device.open();
+          console.log("Device opened:", device.productName);
+
+          updateDeviceContainerVisibility();
+
+          config = deviceReadConfig();
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      async function deviceDisconnect() {
+        try {
+          device.close();
+          device = null;
+          updateDeviceContainerVisibility();
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    
+      async function deviceReadConfig() {
+        try {
+          // Read 32-byte feature report (Report ID 2)
+          const reportId = 2;
+          const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
+          const dataBuffer = reportIdPlusDataDataview.buffer.slice(1);
+          const data = new Uint16Array(dataBuffer);
+
+          // Log raw bytes and their length
+          const rawBytes = new Uint8Array(dataBuffer);
+          console.log("Raw bytes length:", rawBytes.length);
+          console.log("Raw bytes:", Array.from(rawBytes).map(b => b.toString(16).padStart(2, '0')).join(' '));
+
+          // Return the 16-bit config
+          return data[0];
+
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      async function deviceWriteConfig() {
+        try {
+          const reportId = 2;
+
+          const newConfig = new Uint16Array(32);
+          newConfig[0] = config;
+          for (let i = 1; i < 32; i++) newConfig[i] = 0;
+
+          await device.sendFeatureReport(reportId, newConfig);
+          console.log("Updated config:", config);
+
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      // Function to update connectButton, disconnectButton and deviceContainer visibility
+      function updateDeviceContainerVisibility() {
+        const deviceContainer = document.getElementById('deviceContainer');
+        deviceContainer.style.visibility = device === null ? 'hidden' : 'visible';
+        const connectButton = document.getElementById('connect');
+        connectButton.style.display = device === null ? 'inline-block' : 'none';
+        const disconnectButton = document.getElementById('disconnect');
+        disconnectButton.style.display = device === null ? 'none' : 'inline-block';
+      }
+
+      // Listen for device plug
+      navigator.hid.addEventListener('connect', (event) => {
+          console.log('Device plugged in:', event.device);
+      });
+
+      // Listen for device unplug to hide config table
+      navigator.hid.addEventListener('disconnect', (event) => {
+          if (event.device === device) {
+              device = null;
+              updateDeviceContainerVisibility();
+              console.log('Device unplugged');
+          }
+      });
+
+      // Update CPI text input field when slider changes
+      document.getElementById('deviceCPIRange').addEventListener('input', function() {
+        document.getElementById('deviceCPIText').value = this.value;
+        config.cpi = this.value;
+      });
+      // Check bounds, round to nearest 50 and update CPI slider when text input field changes
+      document.getElementById('deviceCPIText').addEventListener('change', function() {
+	// Make sure 50 minimum
+	if (isNaN(this.value) || this.value < 50) this.value = 50;
+	// Make sure 20000 maximum
+	if (this.value > 20000) this.value = 20000;
+	// Round to nearest 50
+	this.value = Math.round(this.value / 50) * 50;
+        document.getElementById('deviceCPIRange').value = this.value;
+        config.cpi = this.value;
+      });
+    </script>
+    <footer>
+      <nav>
+        <a href="https://zaunkoenig.co/about">About</a>
+        <span> | </span>
+        <a href="https://zaunkoenig.co/blog">Blog</a>
+        <span> | </span>
+        <a href="https://zaunkoenig.co/contact">Contact</a>
+        <span> | </span>
+        <a href="https://zaunkoenig.co/m3k">M3K</a>
+        <span> | </span>
+        <a href="https://zaunkoenig.co/support">Support</a>
+        <a title="Zaunkoenig Home" class="logolink" href="https://zaunkoenig.co/">
+          <svg class="logobild" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4082 5000">
+            <path d="M4081.9897 47.704s-.4297 2.922-295.516-14.422C2267.963-56 813.1-71.218 532.5703 2185.117L225.5323.5H.5c88.0023 707.557 348.606 2762.422 500.365 3530.7097 24.74 125.2 82.3304 338.0774 214.48 472.3726l-285.633 996.1423h227.9505L911.0952 4115.94l8.2238 2.002c314.7365 64.8 881.3855 124.973 1432.1364-15.957l399.6997 897.7402h238.0383l-428.3284-962.0244c75.996-27.4 151.068-58.9778 224.375-95.818 711.0457-357.37 891.8718-969.3562 848.7297-2140.7898-40.1877-1091.788 115.2505-1446.0132 448.02-1753.38zM2713.86 986.262c-106.93 0-193.6267-86.71-193.6267-193.627 0-106.94 86.6968-193.627 193.6267-193.627s193.6382 86.688 193.6382 193.627c0 106.918-86.6997 193.627-193.6382 193.627z"></path>
+          </svg>
+        </a>
+      </nav>
+    </footer>
+  
+
+</body></html>
