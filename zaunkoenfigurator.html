@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0027)https://zaunkoenig.co/i/m3k -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -631,71 +630,98 @@
             <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
             <div id="deviceContainer">
             <table>
-			        <tr>
+	      <tr>
+                <td class="left">
+                  Model
+                </td>
+	  	<td class="right">
+		  <div id="deviceModel"></div>
+                </td>
+              </tr>
+	      <tr>
+                <td class="left">
+                  Version
+                </td>
+	  	<td class="right">
+		  <div id="deviceVersion"></div>
+                </td>
+              </tr>
+	      <tr>
+                <td class="left">
+                  Serial
+                </td>
+	  	<td class="right">
+		  <div id="deviceSerial"></div>
+                </td>
+              </tr>
+	      <tr>
+	      </tr>
+	        <td><br/></td>
+	      <tr>
                 <td class="left">
                   Polling Rate
                 </td>
-				        <td class="right">
-		              <select id="pollingRate">
-                    <option value=0>8000Hz</option>
-                    <option value=1>4000Hz</option>
+		<td class="right">
+		  <select id="devicePollingRate">
+                    <option value=8>8000Hz</option>
+                    <option value=4>4000Hz</option>
                     <option value=2>2000Hz</option>
-                    <option value=3>1000Hz</option>
-		              </select>
+                    <option value=1>1000Hz</option>
+	          </select>
                 </td>
               </tr>
-			        <tr>
+	      <tr>
                 <td class="left">
                   Lift Off Distance
                 </td>
-				        <td class="right">
-		              <select id="liftOffDistance">
-                    <option value=0>1mm</option>
-                    <option selected value=1>2mm</option>
-                    <option value=2>3mm</option>
-		              </select>
+		<td class="right">
+		  <select id="deviceLiftOffDistance">
+                    <option value=1>1mm</option>
+                    <option value=2>2mm</option>
+                    <option value=3>3mm</option>
+		  </select>
                 </td>
               </tr>
-			        <tr>
+	      <tr>
                 <td class="left">
                   Angle Snapping
                 </td>
-				        <td class="right">
-		              <select id="deviceAngleSnapping">
+	        <td class="right">
+		  <select id="deviceAngleSnapping">
                     <option value=0>Off</option>
                     <option value=1>On</option>
-		              </select>
+	          </select>
                 </td>
               </tr>
-			        <tr>
+	      <tr>
                 <td class="left">
                   CPI
                 </td>
-				        <td class="right">
-                  <input id="deviceCPIRange" type="range" min="50" max="20000" step="50" value="800">
-                  <input id="deviceCPIText" type="text" value="800">
+		<td class="right">
+                  <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
+                  <input id="deviceCPIText" type="text">
                 </td>
               </tr>
 	      <tr>
                 <td class="left">
                   USB Speed
                 </td>
-				        <td class="right">
-		              <select id="deviceUSBSpeed">
-                    <option value=1>High-Speed</option>
+		<td class="right">
+		  <select id="deviceUSBSpeed">
                     <option value=0>Full-Speed</option>
-		              </select>
+                    <option value=1>High-Speed</option>
+                  </select>
                 </td>
               </tr>
 	      <tr>
                 <td class="left">
                   Swap LMB & RMB
                 </td>
-				        <td class="right">
-		              <select id="deviceBtnSwap">
+		<td class="right">
+		  <select id="deviceBtnSwap">
                     <option value=0>Off</option>
                     <option value=1>On</option>
-		              </select>
+		  </select>
                 </td>
               </tr>
             </table>
@@ -720,7 +746,8 @@
       }
 
       async function resetToDefaults() {
-        // Reset form to defaults
+        // Separate report or special data sequence to tell mouse to reset
+	// If not we need to keep track of a default on both this app and the mice
       }
 
 
@@ -816,18 +843,33 @@
           console.log("Device opened:", device.productName);
 
           updateDeviceContainerVisibility();
+	  updateDeviceContainerData();
 
-          config = deviceReadConfig();
+          //config = deviceReadConfig();
         } catch (error) {
           console.error("Error:", error);
         }
       }
 
+      async function updateDeviceContainerData() {
+        document.getElementById('deviceModel').innerText = device.productName;
+	document.getElementById('deviceVersion').innerText = "placeholder version";
+	document.getElementById('deviceSerial').innerText = "placeholder serial";
+        document.getElementById('devicePollingRate').value = 4;
+        document.getElementById('deviceLiftOffDistance').value = 3;
+        document.getElementById('deviceAngleSnapping').value = 1;
+        document.getElementById('deviceCPIRange').value = 1000;
+        document.getElementById('deviceCPIText').value = 1000;
+        document.getElementById('deviceUSBSpeed').value = 0;
+        document.getElementById('deviceBtnSwap').value = 1;
+      }
+
       async function deviceDisconnect() {
         try {
           device.close();
-          device = null;
           updateDeviceContainerVisibility();
+          device = null;
+	  config = null;
         } catch (error) {
           console.error("Error:", error);
         }
@@ -899,6 +941,7 @@
         document.getElementById('deviceCPIText').value = this.value;
         config.cpi = this.value;
       });
+
       // Check bounds, round to nearest 50 and update CPI slider when text input field changes
       document.getElementById('deviceCPIText').addEventListener('change', function() {
 	// Make sure 50 minimum
@@ -929,6 +972,4 @@
         </a>
       </nav>
     </footer>
-  
-
 </body></html>
