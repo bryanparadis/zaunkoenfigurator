@@ -647,14 +647,6 @@
                 </td>
               </tr>
 	      <tr>
-                <td class="left">
-                  Serial
-                </td>
-	  	<td class="right">
-		  <div id="deviceSerial"></div>
-                </td>
-              </tr>
-	      <tr>
 	        <td><br/></td>
 	      </tr>
 	      <tr>
@@ -724,7 +716,7 @@
 		  </select>
                 </td>
               </tr>
-            </table>
+	</table>
               <button onclick=apply()>Apply</button>
               <button onclick=resetToDefaults()>Reset to Defaults</button>
             </div>
@@ -732,6 +724,7 @@
     </main>
     <script>
       let device = null;
+      let version = null;
       let config = null;
       
       updateDeviceContainerVisibility();
@@ -843,9 +836,9 @@
           console.log("Device opened:", device.productName);
 
           updateDeviceContainerVisibility();
+          version = await deviceReadVersion();
+          config = await deviceReadConfig();
 	  updateDeviceContainerData();
-
-          //config = deviceReadConfig();
         } catch (error) {
           console.error("Error:", error);
         }
@@ -853,8 +846,7 @@
 
       async function updateDeviceContainerData() {
         document.getElementById('deviceModel').innerText = device.productName;
-	document.getElementById('deviceVersion').innerText = "placeholder version";
-	document.getElementById('deviceSerial').innerText = "placeholder serial";
+	document.getElementById('deviceVersion').innerText = version;
         document.getElementById('devicePollingRate').value = 4;
         document.getElementById('deviceLiftOffDistance').value = 3;
         document.getElementById('deviceAngleSnapping').value = 1;
@@ -867,9 +859,32 @@
       async function deviceDisconnect() {
         try {
           device.close();
-          updateDeviceContainerVisibility();
           device = null;
 	  config = null;
+          updateDeviceContainerVisibility();
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      async function deviceReadVersion() {
+        try {
+          const reportId = 2;
+          const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
+
+          let ascii = '';            
+          // Start at 1 to drop report id first byte
+          for (let i = 1; i < reportIdPlusDataDataview.byteLength; i++) {
+            ascii += String.fromCharCode(reportIdPlusDataDataview.getUint8(i));
+          }
+
+	  // Cut extra whitespace off after C null terminator
+          ascii = ascii.split('\0')[0];
+            
+          console.log("Firmware Version: ", ascii);
+
+          return ascii;
+
         } catch (error) {
           console.error("Error:", error);
         }
@@ -878,7 +893,7 @@
       async function deviceReadConfig() {
         try {
           // Read 32-byte feature report (Report ID 2)
-          const reportId = 2;
+          const reportId = 3;
           const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
           const dataBuffer = reportIdPlusDataDataview.buffer.slice(1);
           const data = new Uint16Array(dataBuffer);
@@ -898,7 +913,7 @@
 
       async function deviceWriteConfig() {
         try {
-          const reportId = 2;
+          const reportId = 3;
 
           const newConfig = new Uint16Array(32);
           newConfig[0] = config;
