@@ -741,6 +741,8 @@
       async function resetToDefaults() {
         // Separate report or special data sequence to tell mouse to reset
 	// If not we need to keep track of a default on both this app and the mice
+        config = 65535;
+	deviceWriteConfig();
       }
 
 
@@ -861,6 +863,7 @@
           device.close();
           device = null;
 	  config = null;
+	  version = null;
           updateDeviceContainerVisibility();
         } catch (error) {
           console.error("Error:", error);
@@ -892,7 +895,7 @@
 
       async function deviceReadConfig() {
         try {
-          // Read 32-byte feature report (Report ID 2)
+          // Read 2 byte feature report (Report ID 2)
           const reportId = 3;
           const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
           const dataBuffer = reportIdPlusDataDataview.buffer.slice(1);
@@ -915,9 +918,8 @@
         try {
           const reportId = 3;
 
-          const newConfig = new Uint16Array(32);
+          const newConfig = new Uint16Array(1);
           newConfig[0] = config;
-          for (let i = 1; i < 32; i++) newConfig[i] = 0;
 
           await device.sendFeatureReport(reportId, newConfig);
           console.log("Updated config:", config);
@@ -945,8 +947,7 @@
       // Listen for device unplug to hide config table
       navigator.hid.addEventListener('disconnect', (event) => {
           if (event.device === device) {
-              device = null;
-              updateDeviceContainerVisibility();
+	      deviceDisconnect();
               console.log('Device unplugged');
           }
       });
