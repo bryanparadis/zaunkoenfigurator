@@ -708,7 +708,7 @@
               </tr>
 	      <tr>
                 <td class="left">
-                  Swap LMB & RMB
+                  Swap L & R Buttons
                 </td>
 		<td class="right">
 		  <select id="deviceBtnSwap">
@@ -727,7 +727,7 @@
                 </td>
               </tr>
 	</table>
-              <button onclick=saveConfig()>Apply</button>
+              <button onclick=apply()>Apply</button>
               <button onclick=factoryReset()>Factory Reset</button>
             </div>
       </article>
@@ -745,7 +745,7 @@
         // Validate
 
         // Write Config
-
+	deviceWriteConfig();
       }
 
       async function factoryReset() {
