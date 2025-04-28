@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="robots" content="none">
     <title>Zaunkoenfigurator</title>
@@ -626,110 +625,110 @@
     <main>
       <article>
         <h1>Zaunkoenfigurator</h1>
-            <button id="connect" onclick=deviceConnect()>Connect</button>
-            <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
-            <div id="deviceContainer">
-            <table>
-	      <tr>
-                <td class="left">
-                  Model
-                </td>
-	  	<td class="right">
-		  <div id="deviceModel"></div>
-                </td>
-              </tr>
-	      <tr>
-                <td class="left">
-                  Version
-                </td>
-	  	<td class="right">
-		  <div id="deviceVersion"></div>
-                </td>
-              </tr>
-	      <tr>
-	        <td><br/></td>
-	      </tr>
-	      <tr>
-                <td class="left">
-                  USB Speed
-                </td>
+        <button id="connect" onclick=deviceConnect()>Connect</button>
+        <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
+        <div id="deviceContainer">
+          <table>
+	    <tr>
+              <td class="left">
+                Model
+              </td>
 		<td class="right">
-		  <select id="deviceUSBSpeed">
-                    <option value=1>High-Speed</option>
-                    <option value=0>Full-Speed</option>
-                  </select>
-                </td>
-              </tr>
-	      <tr id=rowPollingRateFullSpeed style="display: none;">
-                <td class="left">
-                  Polling Rate
-                </td>
+	        <div id="deviceModel"></div>
+              </td>
+            </tr>
+	    <tr>
+              <td class="left">
+                Version
+              </td>
 		<td class="right">
-		  <select id="devicePollingRateFullSpeed">
-                    <option value=0>1000Hz</option>
-	          </select>
-                </td>
-              </tr>
-	      <tr id=rowPollingRateHighSpeed>
-                <td class="left">
-                  Polling Rate
-                </td>
-		<td class="right">
-		  <select id="devicePollingRate">
-                    <option value=8>8000Hz</option>
-                    <option value=4>4000Hz</option>
-                    <option value=2>2000Hz</option>
-                    <option value=1>1000Hz</option>
-	          </select>
-                </td>
-              </tr>
-	      <tr>
-                <td class="left">
-                  Lift Off Distance
-                </td>
-		<td class="right">
-		  <select id="deviceLiftOffDistance">
-                    <option value=1>1mm</option>
-                    <option value=2>2mm</option>
-                    <option value=3>3mm</option>
-		  </select>
-                </td>
-              </tr>
-	      <tr>
-                <td class="left">
-                  Angle Snapping
-                </td>
-	        <td class="right">
-		  <select id="deviceAngleSnapping">
-                    <option value=0>Off</option>
-                    <option value=1>On</option>
-	          </select>
-                </td>
-              </tr>
-	      <tr>
-                <td class="left">
-                  Swap L & R Buttons
-                </td>
-		<td class="right">
-		  <select id="deviceBtnSwap">
-                    <option value=0>Off</option>
-                    <option value=1>On</option>
-		  </select>
-                </td>
-              </tr>
-	      <tr>
-                <td class="left">
-                  CPI
-                </td>
-		<td class="right">
-                  <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
-                  <input id="deviceCPIText" type="text">
-                </td>
-              </tr>
-	</table>
-              <button onclick=apply()>Apply</button>
-              <button onclick=factoryReset()>Factory Reset</button>
-            </div>
+	        <div id="deviceVersion"></div>
+              </td>
+            </tr>
+	    <tr>
+	      <td><br/></td>
+	    </tr>
+	    <tr>
+              <td class="left">
+                USB Speed
+              </td>
+	      <td class="right">
+	        <select id="deviceUSBSpeed">
+                  <option value=1>High-Speed</option>
+                  <option value=0>Full-Speed</option>
+                </select>
+              </td>
+            </tr>
+	    <tr id=rowPollingRateFullSpeed style="display: none;">
+              <td class="left">
+                Polling Rate
+              </td>
+	      <td class="right">
+	        <select id="devicePollingRateFullSpeed">
+                  <option value=0>1000Hz</option>
+	        </select>
+              </td>
+            </tr>
+	    <tr id=rowPollingRateHighSpeed>
+              <td class="left">
+                Polling Rate
+              </td>
+	      <td class="right">
+	        <select id="devicePollingRate">
+                  <option value=0>8000Hz</option>
+                  <option value=1>4000Hz</option>
+                  <option value=2>2000Hz</option>
+                  <option value=3>1000Hz</option>
+	        </select>
+              </td>
+            </tr>
+	    <tr>
+              <td class="left">
+                Lift Off Distance
+              </td>
+	      <td class="right">
+	        <select id="deviceLiftOffDistance">
+                  <option value=0>1mm</option>
+                  <option value=1>2mm</option>
+                  <option value=2>3mm</option>
+	        </select>
+              </td>
+            </tr>
+	    <tr>
+              <td class="left">
+                Angle Snapping
+              </td>
+	      <td class="right">
+	        <select id="deviceAngleSnapping">
+                  <option value=0>Off</option>
+                  <option value=1>On</option>
+	        </select>
+              </td>
+            </tr>
+	    <tr>
+              <td class="left">
+                Swap L & R Buttons
+              </td>
+	      <td class="right">
+	        <select id="deviceSwapButtons">
+                  <option value=0>Off</option>
+                  <option value=1>On</option>
+	        </select>
+              </td>
+            </tr>
+	    <tr>
+              <td class="left">
+                CPI
+              </td>
+	      <td class="right">
+                <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
+                <input id="deviceCPIText" type="text">
+              </td>
+            </tr>
+	  </table>
+          <button onclick=apply()>Apply</button>
+          <button onclick=factoryReset()>Factory Reset</button>
+        </div>
       </article>
     </main>
     <script>
@@ -740,12 +739,7 @@
       updateDeviceContainerVisibility();
 
       async function apply() {
-        // Get values
-
-        // Validate
-
-        // Write Config
-	deviceWriteConfig();
+	deviceWriteConfig();
       }
 
       async function factoryReset() {
@@ -754,17 +748,11 @@
 	deviceWriteConfig(true);
       }
 
-
-      /**
-       * Parses a 16-bit mouse configuration bitfield into its components.
-       * @param {number} config - The 16-bit configuration value (0 to 65535).
-       * @returns {Object} An object containing the parsed configuration fields.
-       */
-      function parseMouseConfig(config) {
+      function deviceParseConfig(config) {
           // Ensure the input is a 16-bit unsigned integer
           config = config & 0xFFFF;
 
-          // Define bitfield positions and masks (translated from C #defines)
+          const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
           const CONFIG_ANGLE_SNAP_ON = 1 << 14; // 0x4000
           const CONFIG_HS_USB = 1 << 13;        // 0x2000
           const CONFIG_INTERVAL_Pos = 11;
@@ -774,60 +762,50 @@
           const CONFIG_DPI_Pos = 0;
           const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;          // 0x01FF
 
-          // Extract each field using bitwise operations
-          const angleSnapOn = (config & CONFIG_ANGLE_SNAP_ON) !== 0; // Boolean: true if bit 14 is set
-          const hsUsb = (config & CONFIG_HS_USB) !== 0;             // Boolean: true if bit 13 is set
-          const interval = (config & CONFIG_INTERVAL_Msk) >> CONFIG_INTERVAL_Pos; // 2 bits: 0 to 3
-          const lod = (config & CONFIG_LOD_Msk) >> CONFIG_LOD_Pos;  // 2 bits: 0 to 3
-          const dpi = (config & CONFIG_DPI_Msk) >> CONFIG_DPI_Pos;  // 9 bits: 0 to 511
+          const swapButtons = (config & CONFIG_ANGLE_SNAP_ON) !== 0; // Boolean: true if bit 14 is set
+          const angleSnapping = (config & CONFIG_ANGLE_SNAP_ON) !== 0; // Boolean: true if bit 14 is set
+          const usbSpeed = (config & CONFIG_HS_USB) !== 0;             // Boolean: true if bit 13 is set
+          const pollingRate = (config & CONFIG_INTERVAL_Msk) >> CONFIG_INTERVAL_Pos; // 2 bits: 0 to 3
+          const liftOffDistance = (config & CONFIG_LOD_Msk) >> CONFIG_LOD_Pos;  // 2 bits: 0 to 3
+          const cpi = (config & CONFIG_DPI_Msk) >> CONFIG_DPI_Pos;  // 9 bits: 0 to 511
 
-          // Return the parsed values as an object
           return {
-              angleSnapOn,  // Boolean: true if angle snapping is enabled
-              hsUsb,        // Boolean: true if High-Speed USB is enabled
-              interval,     // Number: 0 to 3 (polling interval setting)
-              lod,          // Number: 0 to 3 (Lift-Off Distance setting)
-              dpi           // Number: 0 to 511 (DPI setting)
+	      swapButtons, 
+              angleSnapping,   // Boolean: true if angle snapping is enabled
+              usbSpeed,        // Boolean: true if High-Speed USB is enabled
+              pollingRate,     // Number: 0 to 3 (polling interval setting)
+              liftOffDistance, // Number: 0 to 3 (Lift-Off Distance setting)
+              cpi              // Number: 0 to 399 (DPI setting)
           };
       }
 
-      /**
-       * Builds a 16-bit mouse configuration bitfield from its components.
-       * @param {Object} configObj - The configuration object with fields.
-       * @param {boolean} configObj.angleSnapOn - Angle snapping enabled (bit 14).
-       * @param {boolean} configObj.hsUsb - High-Speed USB enabled (bit 13).
-       * @param {number} configObj.interval - Polling interval setting (0 to 3, bits 11-12).
-       * @param {number} configObj.lod - Lift-Off Distance setting (0 to 3, bits 9-10).
-       * @param {number} configObj.dpi - DPI setting (0 to 511, bits 0-8).
-       * @returns {number} The 16-bit configuration value (0 to 65535).
-       */
-      function buildMouseConfig({ angleSnapOn, hsUsb, interval, lod, dpi }) {
+      function deviceBuildConfig({swapButtons, angleSnapping, usbSpeed, pollingRate, liftOffDistance, cpi }) {
           // Validate inputs
-          if (typeof angleSnapOn !== 'boolean') throw new Error('angleSnapOn must be a boolean');
-          if (typeof hsUsb !== 'boolean') throw new Error('hsUsb must be a boolean');
-          if (!Number.isInteger(interval) || interval < 0 || interval > 3) throw new Error('interval must be an integer between 0 and 3');
-          if (!Number.isInteger(lod) || lod < 0 || lod > 3) throw new Error('lod must be an integer between 0 and 3');
-          if (!Number.isInteger(dpi) || dpi < 0 || dpi > 511) throw new Error('dpi must be an integer between 0 and 511');
+          if (typeof swapButtons !== 'boolean') throw new Error('swapButtons must be a boolean');
+          if (typeof angleSnapping !== 'boolean') throw new Error('angleSnapping must be a boolean');
+          if (typeof usbSpeed !== 'boolean') throw new Error('usbSpeed must be a boolean');
+          if (!Number.isInteger(pollingRate) || pollingRate < 0 || pollingRate > 3) throw new Error('pollingRate must be an integer between 0 and 3');
+          if (!Number.isInteger(liftOffDistance) || liftOffDistance < 0 || liftOffDistance > 3) throw new Error('liftOffDistance must be an integer between 0 and 3');
+          if (!Number.isInteger(cpi) || cpi < 0 || cpi > 399) throw new Error('cpi must be an integer between 0 and 399');
 
-          // Define bitfield positions and masks (same as parseMouseConfig)
-          const CONFIG_ANGLE_SNAP_ON = 1 << 14; // 0x4000
-          const CONFIG_HS_USB = 1 << 13;        // 0x2000
+          const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
+          const CONFIG_ANGLE_SNAP_ON = 1 << 14;
+	  const CONFIG_HS_USB = 1 << 13;
           const CONFIG_INTERVAL_Pos = 11;
-          const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos; // 0x1800
+          const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos;
           const CONFIG_LOD_Pos = 9;
-          const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;           // 0x0600
+          const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;
           const CONFIG_DPI_Pos = 0;
-          const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;          // 0x01FF
+          const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;
 
-          // Start with a zeroed 16-bit value
           let config = 0;
 
-          // Set each field using bitwise operations
-          if (angleSnapOn) config |= CONFIG_ANGLE_SNAP_ON; // Set bit 14
-          if (hsUsb) config |= CONFIG_HS_USB;              // Set bit 13
-          config |= (interval << CONFIG_INTERVAL_Pos) & CONFIG_INTERVAL_Msk; // Set bits 11-12
-          config |= (lod << CONFIG_LOD_Pos) & CONFIG_LOD_Msk;               // Set bits 9-10
-          config |= (dpi << CONFIG_DPI_Pos) & CONFIG_DPI_Msk;               // Set bits 0-8
+          if (swapButtons) config |= CONFIG_SWAP_LMB_AND_RMB;
+          if (angleSnapping) config |= CONFIG_ANGLE_SNAP_ON;
+          if (usbSpeed) config |= CONFIG_HS_USB;
+          config |= (pollingRate << CONFIG_INTERVAL_Pos) & CONFIG_INTERVAL_Msk;
+          config |= (liftOffDistance << CONFIG_LOD_Pos) & CONFIG_LOD_Msk;
+          config |= (cpi << CONFIG_DPI_Pos) & CONFIG_DPI_Msk;
 
           // Ensure the result is a 16-bit unsigned integer
           return config & 0xFFFF;
@@ -856,15 +834,16 @@
       }
 
       async function updateDeviceContainerData() {
+	// TODO naming needs to match better
         document.getElementById('deviceModel').innerText = device.productName;
 	document.getElementById('deviceVersion').innerText = version;
-        document.getElementById('deviceUSBSpeed').value = 1;
-        document.getElementById('devicePollingRate').value = 4;
-        document.getElementById('deviceLiftOffDistance').value = 3;
-        document.getElementById('deviceAngleSnapping').value = 1;
-        document.getElementById('deviceCPIRange').value = 1000;
-        document.getElementById('deviceCPIText').value = 1000;
-        document.getElementById('deviceBtnSwap').value = 1;
+        document.getElementById('deviceUSBSpeed').value = config.usbSpeed | 0;
+        document.getElementById('devicePollingRate').value = config.pollingRate;
+        document.getElementById('deviceLiftOffDistance').value = config.liftOffDistance;
+        document.getElementById('deviceAngleSnapping').value = config.angleSnapping | 0;
+        document.getElementById('deviceSwapButtons').value = config.swapButtons | 0;
+        document.getElementById('deviceCPIRange').value = (config.cpi + 1) * 50;
+        document.getElementById('deviceCPIText').value = (config.cpi + 1) * 50;
       }
 
       async function deviceDisconnect() {
@@ -916,7 +895,7 @@
           console.log("Raw bytes:", Array.from(rawBytes).map(b => b.toString(16).padStart(2, '0')).join(' '));
 
           // Return the 16-bit config
-          return data[0];
+          return await deviceParseConfig(data[0]);
 
         } catch (error) {
           console.error("Error:", error);
@@ -928,7 +907,7 @@
           const reportId = 3;
 
           const newConfig = new Uint16Array(2);
-          newConfig[0] = config;
+          newConfig[0] = deviceBuildConfig(config);
 	  newConfig[1] = factoryReset ? 0xFFFF: 0; 
 
           await device.sendFeatureReport(reportId, newConfig);
@@ -962,15 +941,15 @@
           }
       });
 
+      document.getElementById('deviceUSBSpeed').addEventListener('input', function() {
+	rowPollingRateHighSpeed.style.display = this.value == 0 ? 'none' : 'table-row';
+	rowPollingRateFullSpeed.style.display = this.value == 1 ? 'none' : 'table-row';
+      });
+
       // Update CPI text input field when slider changes
       document.getElementById('deviceCPIRange').addEventListener('input', function() {
         document.getElementById('deviceCPIText').value = this.value;
         config.cpi = this.value;
-      });
-
-      document.getElementById('deviceUSBSpeed').addEventListener('input', function() {
-	rowPollingRateHighSpeed.style.display = this.value == 0 ? 'none' : 'table-row';
-	rowPollingRateFullSpeed.style.display = this.value == 1 ? 'none' : 'table-row';
       });
 
       // Check bounds, round to nearest 50 and update CPI slider when text input field changes
