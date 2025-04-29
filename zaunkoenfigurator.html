@@ -913,15 +913,21 @@
           newConfig[0] = deviceBuildConfig(config);
 	  newConfig[1] = factoryReset ? 0xFFFF: 0; 
 
-          await device.sendFeatureReport(reportId, newConfig);
-          console.log("Updated config:", config);
+	  currentConfig = await deviceReadConfig();
+	  if (deviceBuildConfig(currentConfig) != newConfig[0]) {
 
-	  updatedConfig = await deviceReadConfig();
-     	  if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
-     	    console.log("Config updated successfully");
-     	  } else {
-     	    alert("Config update failed");
-     	  }
+            await device.sendFeatureReport(reportId, newConfig);
+            console.log("Updated config:", config);
+
+	    updatedConfig = await deviceReadConfig();
+     	    if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
+     	      console.log("Config updated successfully");
+     	    } else {
+     	      alert("Config update failed");
+     	    }
+	  } else {
+	    console.log("Config update skipped no change");
+	  }
 
         } catch (error) {
           console.error("Error:", error);
