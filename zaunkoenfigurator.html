@@ -810,7 +810,7 @@
       }
 
       async function factoryReset() {
-	deviceWriteConfig(true);
+	deviceFactoryReset();
       }
 
       async function deviceConnect() {
@@ -909,30 +909,54 @@
         }
       }
 
-      async function deviceWriteConfig(factoryReset) {
+      async function deviceWriteConfig() {
         try {
           const reportId = 3;
 
           const newConfig = new Uint16Array(2);
           newConfig[0] = deviceBuildConfig(config);
-	  newConfig[1] = factoryReset ? 0xFFFF: 0; 
+	  newConfig[1] = 0; 
 
-	  currentConfig = await deviceReadConfig();
-	  if (deviceBuildConfig(currentConfig) != newConfig[0]) {
-
+  	  currentConfig = await deviceReadConfig();
+	  
+          if (deviceBuildConfig(currentConfig) != newConfig[0]) {
+      
             await device.sendFeatureReport(reportId, newConfig);
             console.log("Updated config:", config);
+      
+            updatedConfig = await deviceReadConfig();
+            
+	    if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
+      	      console.log("Config updated successfully");
+            } else {
+      	      alert("Config update failed");
+            }
+          } else {
+            console.log("Config update skipped no change");
+          }
+	  
+	  config = updatedConfig;
+	  updateDeviceContainerData();
 
-	    updatedConfig = await deviceReadConfig();
-     	    if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
-     	      console.log("Config updated successfully");
-     	    } else {
-     	      alert("Config update failed");
-     	    }
-	  } else {
-	    console.log("Config update skipped no change");
-	  }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
 
+      async function deviceFactoryReset() {
+        try {
+          const reportId = 3;
+
+          const newConfig = new Uint16Array(2);
+          newConfig[0] = 0;
+	  newConfig[1] = 0xFFFF; 
+
+  	  currentConfig = await deviceReadConfig();
+
+          await device.sendFeatureReport(reportId, newConfig);
+	  console.log("Factory Reset successfully");
+	  config = await deviceReadConfig();
+	  updateDeviceContainerData();
         } catch (error) {
           console.error("Error:", error);
         }
