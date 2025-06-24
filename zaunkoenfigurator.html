@@ -927,11 +927,12 @@
       
             await device.sendFeatureReport(reportId, newConfig);
             console.log("Updated config:", config);
-      
-            updatedConfig = await deviceReadConfig();
+	    
+            const updatedConfig = await deviceReadConfig();
             
 	    if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
       	      console.log("Config updated successfully");
+	      config = updatedConfig;
             } else {
       	      alert("Config update failed");
             }
@@ -939,7 +940,6 @@
             console.log("Config update skipped no change");
           }
 	  
-	  config = updatedConfig;
 	  updateDeviceContainerData();
 
         } catch (error) {
