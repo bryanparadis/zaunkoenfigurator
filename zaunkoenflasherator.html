@@ -827,7 +827,7 @@
         }
       }
 
-      async void function dfuReset() {
+      async function dfuReset() {
             const packet = {
             requestType: 'class',
             recipient:   'interface',
@@ -837,7 +837,7 @@
           }
 
         // This always errors as the device restarts
-        await device.controlTransferIn(packet, 6)).status;
+        await device.controlTransferIn(packet, 6);
 
       }
 
