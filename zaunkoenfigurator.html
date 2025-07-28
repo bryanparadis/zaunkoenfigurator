@@ -796,14 +796,14 @@
 
       // Check bounds, round to nearest 50 and update CPI slider when text input field changes
       document.getElementById('deviceCPIText').addEventListener('change', function() {
-			// Make sure 50 minimum
-			if (isNaN(this.value) || this.value < 50) this.value = 50;
-			// Make sure 20000 maximum
-			if (this.value > 20000) this.value = 20000;
-			// Round to nearest 50
-			this.value = Math.round(this.value / 50) * 50;
-        document.getElementById('deviceCPIRange').value = this.value;
-        config.cpi = Number(this.value) / 50 - 1;
+				// Make sure 50 minimum
+				if (isNaN(this.value) || this.value < 50) this.value = 50;
+				// Make sure 20000 maximum
+				if (this.value > 20000) this.value = 20000;
+				// Round to nearest 50
+				this.value = Math.round(this.value / 50) * 50;
+      	  document.getElementById('deviceCPIRange').value = this.value;
+      	  config.cpi = Number(this.value) / 50 - 1;
       });
 
       async function apply() {
