@@ -940,6 +940,7 @@
       async function deviceDisconnect() {
         try {
           device.close();
+          console.log("Device closed:", device.productName);
           device = null;
           config = null;
           version = null;
