@@ -979,7 +979,7 @@
           // Cut extra whitespace off after C null terminator
           ascii = ascii.split('\0')[0];
 
-          console.log("Firmware Version: ", ascii);
+          console.log("Firmware version:", ascii);
 
           return ascii;
 
@@ -996,14 +996,15 @@
           const dataBuffer = reportIdPlusDataDataview.buffer.slice(1);
           const data = new Uint16Array(dataBuffer);
 
-          // Log raw bytes and their length
-          const rawBytes = new Uint8Array(dataBuffer);
-          console.log("Raw bytes length:", rawBytes.length);
-          console.log("Raw bytes:", Array.from(rawBytes).map(b => b.toString(16).padStart(2, '0')).join(' '));
-
           // Return the 16-bit config
           readConfig = await deviceParseConfig(data[0]);
-          console.log("Read config:", readConfig);
+          console.log("Config read:", JSON.stringify(readConfig));
+
+          // Log raw bytes and their length
+          const rawBytes = new Uint8Array(dataBuffer);
+          console.log("Config bytes:", Array.from(rawBytes).map(b => b.toString(16).padStart(2, '0')).join(' '));
+          console.log("Config length:", rawBytes.length);
+
           return readConfig;
         } catch (error) {
           console.error("Error:", error);
@@ -1023,18 +1024,18 @@
           if (deviceBuildConfig(currentConfig) != newConfig[0]) {
 
             await device.sendFeatureReport(reportId, newConfig);
-            console.log("Updated config:", config);
+            console.log("Config write:", JSON.stringify(config));
 
             const updatedConfig = await deviceReadConfig();
 
           if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
-              console.log("Config updated successfully");
+              console.log("Config write: Success");
               config = updatedConfig;
             } else {
-              alert("Config update failed");
+              alert("Config write: Fail");
             }
           } else {
-            console.log("Config update skipped no change");
+            console.log("Config write: Skipped no change");
           }
 
           updateDeviceContainerData();
@@ -1055,7 +1056,7 @@
           currentConfig = await deviceReadConfig();
 
           await device.sendFeatureReport(reportId, newConfig);
-          console.log("Factory Reset successfully");
+          console.log("Factory reset: Success");
           config = await deviceReadConfig();
           updateDeviceContainerData();
         } catch (error) {
