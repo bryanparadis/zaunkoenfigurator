@@ -999,7 +999,8 @@
 
           // Return the 16-bit config
           readConfig = await deviceParseConfig(data[0]);
-          console.log("Config read:", JSON.stringify(readConfig));
+          // Space after read: is to align it with Config write log line
+          console.log("Config read: ", JSON.stringify(readConfig));
 
           // Log raw bytes and their length
           const rawBytes = new Uint8Array(dataBuffer);
