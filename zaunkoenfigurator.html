@@ -847,14 +847,15 @@
 
       // Listen for device plug
       navigator.hid.addEventListener('connect', (event) => {
-        console.log('Device plugged in:', event.device);
+        console.log('Device connected:', event.device.productName);
       });
 
       // Listen for device unplug to hide config table
       navigator.hid.addEventListener('disconnect', (event) => {
+        console.log('Device disconnected:', event.device.productName);
+
         if (event.device === device) {
           deviceDisconnect();
-          console.log('Device unplugged');
         }
       });
 
