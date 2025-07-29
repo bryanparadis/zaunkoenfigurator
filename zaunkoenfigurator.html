@@ -604,7 +604,7 @@
       }
 
       select {
-	text-align-last: right;
+        text-align-last: right;
         outline: none;
         background: black;
       }
@@ -615,16 +615,16 @@
       input#deviceCPIRange {
         vertical-align: middle;
         width: 80%;
-	accent-color: white;
+        accent-color: white;
       }
 
       input#deviceCPIText {
         width:10%;
         vertical-align: middle;
         text-align: right;
-	color: white;
-	border: dashed;
-	border-color: white;
+        color: white;
+        border: dashed;
+        border-color: white;
         background: transparent;
       }
     </style>
@@ -637,103 +637,103 @@
         <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
         <div id="deviceContainer">
           <table>
-						<tr>
+            <tr>
               <td class="left">
                 Model
               </td>
-							<td class="right">
-								<div id="deviceModel"></div>
+              <td class="right">
+                <div id="deviceModel"></div>
               </td>
             </tr>
-						<tr>
+            <tr>
               <td class="left">
-              	Firmware Version
-            	</td>
-							<td class="right">
-								<div id="deviceVersion"></div>
+                Firmware Version
+              </td>
+              <td class="right">
+                <div id="deviceVersion"></div>
               </td>
             </tr>
-						<tr>
-							<td><br/></td>
-						</tr>
-						<tr>
+            <tr>
+              <td><br/></td>
+            </tr>
+            <tr>
               <td class="left">
                 USB Speed
               </td>
-							<td class="right">
-								<select id="deviceUSBSpeed">
+              <td class="right">
+                <select id="deviceUSBSpeed">
                   <option value=1>High-Speed</option>
                   <option value=0>Full-Speed</option>
                 </select>
               </td>
             </tr>
-						<tr id=rowPollingRateFullSpeed style="display: none;">
+            <tr id=rowPollingRateFullSpeed style="display: none;">
               <td class="left">
                 Polling Rate
               </td>
-							<td class="right">
-								<select id="devicePollingRateFullSpeed">
-                	<option value=0>1000Hz</option>
-								</select>
+              <td class="right">
+                <select id="devicePollingRateFullSpeed">
+                  <option value=0>1000Hz</option>
+                </select>
               </td>
             </tr>
-						<tr id=rowPollingRateHighSpeed>
+            <tr id=rowPollingRateHighSpeed>
               <td class="left">
                 Polling Rate
               </td>
-							<td class="right">
-								<select id="devicePollingRate">
+              <td class="right">
+                <select id="devicePollingRate">
                   <option value=0>8000&thinsp;Hz</option>
                   <option value=1>4000&thinsp;Hz</option>
                   <option value=2>2000&thinsp;Hz</option>
                   <option value=3>1000&thinsp;Hz</option>
-								</select>
+                </select>
               </td>
             </tr>
-						<tr>
+            <tr>
               <td class="left">
                 Lift Off Distance
               </td>
-							<td class="right">
-								<select id="deviceLiftOffDistance">
+              <td class="right">
+                <select id="deviceLiftOffDistance">
                   <option value=0>1&thinsp;mm</option>
                   <option value=1>2&thinsp;mm</option>
                   <option value=2>3&thinsp;mm</option>
-								</select>
+                </select>
               </td>
             </tr>
-						<tr>
+            <tr>
               <td class="left">
                 Angle Snapping
               </td>
-							<td class="right">
-								<select id="deviceAngleSnapping">
+              <td class="right">
+                <select id="deviceAngleSnapping">
                   <option value=0>Off</option>
                   <option value=1>On</option>
-								</select>
+                </select>
               </td>
             </tr>
-						<tr>
+            <tr>
               <td class="left">
                 Primary Button
               </td>
-							<td class="right">
-								<select id="deviceSwapButtons">
+              <td class="right">
+                <select id="deviceSwapButtons">
                   <option value=0>Left</option>
                   <option value=1>Right</option>
-								</select>
+                </select>
               </td>
             </tr>
-						<tr>
+            <tr>
               <td class="left">
                 Sensitivity
               </td>
-							<td class="right">
+              <td class="right">
                 <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
                 <input id="deviceCPIText" type="text">
               </td>
             </tr>
-					</table>
+          </table>
           <button onclick=apply()>Apply</button>
           <button onclick=factoryReset()>Factory Reset</button>
         </div>
@@ -743,7 +743,7 @@
       let device = null;
       let version = null;
       let config = null;
-      
+
       updateDeviceContainerVisibility();
 
       // Function to update connectButton, disconnectButton and deviceContainer visibility
@@ -764,31 +764,31 @@
       // Listen for device unplug to hide config table
       navigator.hid.addEventListener('disconnect', (event) => {
           if (event.device === device) {
-				deviceDisconnect();
+        deviceDisconnect();
               console.log('Device unplugged');
           }
       });
 
       document.getElementById('deviceUSBSpeed').addEventListener('input', function() {
-				rowPollingRateHighSpeed.style.display = this.value == 0 ? 'none' : 'table-row';
-				rowPollingRateFullSpeed.style.display = this.value == 1 ? 'none' : 'table-row';
-				config.usbSpeed = Number(this.value);
+        rowPollingRateHighSpeed.style.display = this.value == 0 ? 'none' : 'table-row';
+        rowPollingRateFullSpeed.style.display = this.value == 1 ? 'none' : 'table-row';
+        config.usbSpeed = Number(this.value);
       });
 
       document.getElementById('devicePollingRate').addEventListener('input', function() {
-				config.pollingRate = Number(this.value);
+        config.pollingRate = Number(this.value);
       });
 
       document.getElementById('deviceLiftOffDistance').addEventListener('input', function() {
-				config.liftOffDistance = Number(this.value);
+        config.liftOffDistance = Number(this.value);
       });
 
       document.getElementById('deviceAngleSnapping').addEventListener('input', function() {
-				config.angleSnapping = Number(this.value);
+        config.angleSnapping = Number(this.value);
       });
 
       document.getElementById('deviceSwapButtons').addEventListener('input', function() {
-				config.swapButtons = Number(this.value);
+        config.swapButtons = Number(this.value);
       });
 
       // Update CPI text input field when slider changes
@@ -799,28 +799,28 @@
 
       // Check bounds, round to nearest 50 and update CPI slider when text input field changes
       document.getElementById('deviceCPIText').addEventListener('change', function() {
-				// Make sure 50 minimum
-				if (isNaN(this.value) || this.value < 50) this.value = 50;
-				// Make sure 20000 maximum
-				if (this.value > 20000) this.value = 20000;
-				// Round to nearest 50
-				this.value = Math.round(this.value / 50) * 50;
-      	  document.getElementById('deviceCPIRange').value = this.value;
-      	  config.cpi = Number(this.value) / 50 - 1;
+        // Make sure 50 minimum
+        if (isNaN(this.value) || this.value < 50) this.value = 50;
+        // Make sure 20000 maximum
+        if (this.value > 20000) this.value = 20000;
+        // Round to nearest 50
+        this.value = Math.round(this.value / 50) * 50;
+          document.getElementById('deviceCPIRange').value = this.value;
+          config.cpi = Number(this.value) / 50 - 1;
       });
 
       async function apply() {
-				deviceWriteConfig();
+        deviceWriteConfig();
       }
 
       async function factoryReset() {
-	deviceFactoryReset();
+  deviceFactoryReset();
       }
 
       async function deviceConnect() {
         try {
           const devices = await navigator.hid.requestDevice({
-            filters: [{ 
+            filters: [{
               vendorId:  0x0483, // STMicroelectronics
               productId: 0xA462  // M3K
             }]});
@@ -832,7 +832,7 @@
 
           version = await deviceReadVersion();
           config = await deviceReadConfig();
-					updateDeviceContainerData();
+          updateDeviceContainerData();
           updateDeviceContainerVisibility();
         } catch (error) {
           console.error("Error:", error);
@@ -843,8 +843,8 @@
         try {
           device.close();
           device = null;
-					config = null;
-					version = null;
+          config = null;
+          version = null;
           updateDeviceContainerVisibility();
         } catch (error) {
           console.error("Error:", error);
@@ -853,13 +853,13 @@
 
       async function updateDeviceContainerData() {
         document.getElementById('deviceModel').innerText = device.productName;
-				document.getElementById('deviceVersion').innerText = version;
+        document.getElementById('deviceVersion').innerText = version;
         document.getElementById('deviceUSBSpeed').value = config.usbSpeed;
         document.getElementById('devicePollingRate').value = config.pollingRate;
-				// Setting deviceUSBSpeed doesn't dispatch the input event so we fire manually
+        // Setting deviceUSBSpeed doesn't dispatch the input event so we fire manually
         deviceUSBSpeed = document.getElementById('deviceUSBSpeed');
-				deviceUSBSpeed.value = config.usbSpeed;
-				deviceUSBSpeed.dispatchEvent(new Event('input', {bubbles: true}));
+        deviceUSBSpeed.value = config.usbSpeed;
+        deviceUSBSpeed.dispatchEvent(new Event('input', {bubbles: true}));
         document.getElementById('deviceLiftOffDistance').value = config.liftOffDistance;
         document.getElementById('deviceAngleSnapping').value = config.angleSnapping;
         document.getElementById('deviceSwapButtons').value = config.swapButtons;
@@ -872,15 +872,15 @@
           const reportId = 2;
           const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
 
-          let ascii = '';            
+          let ascii = '';
           // Start at 1 to drop report id first byte
           for (let i = 1; i < reportIdPlusDataDataview.byteLength; i++) {
             ascii += String.fromCharCode(reportIdPlusDataDataview.getUint8(i));
           }
 
-					// Cut extra whitespace off after C null terminator
+          // Cut extra whitespace off after C null terminator
           ascii = ascii.split('\0')[0];
-            
+
           console.log("Firmware Version: ", ascii);
 
           return ascii;
@@ -906,7 +906,7 @@
           // Return the 16-bit config
           readConfig = await deviceParseConfig(data[0]);
           console.log("Read config:", readConfig);
-					return readConfig;
+          return readConfig;
 
         } catch (error) {
           console.error("Error:", error);
@@ -919,28 +919,28 @@
 
           const newConfig = new Uint16Array(2);
           newConfig[0] = deviceBuildConfig(config);
-					newConfig[1] = 0; 
+          newConfig[1] = 0; 
 
-					currentConfig = await deviceReadConfig();
-		
+          currentConfig = await deviceReadConfig();
+
           if (deviceBuildConfig(currentConfig) != newConfig[0]) {
-      
+
             await device.sendFeatureReport(reportId, newConfig);
             console.log("Updated config:", config);
-			
+
             const updatedConfig = await deviceReadConfig();
-            
-					if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
-							console.log("Config updated successfully");
-							config = updatedConfig;
+
+          if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
+              console.log("Config updated successfully");
+              config = updatedConfig;
             } else {
-							alert("Config update failed");
+              alert("Config update failed");
             }
           } else {
             console.log("Config update skipped no change");
           }
-		
-					updateDeviceContainerData();
+
+          updateDeviceContainerData();
 
         } catch (error) {
           console.error("Error:", error);
@@ -953,14 +953,14 @@
 
           const newConfig = new Uint16Array(2);
           newConfig[0] = 0;
-					newConfig[1] = 0xFFFF; 
+          newConfig[1] = 0xFFFF;
 
-					currentConfig = await deviceReadConfig();
+          currentConfig = await deviceReadConfig();
 
           await device.sendFeatureReport(reportId, newConfig);
-					console.log("Factory Reset successfully");
-					config = await deviceReadConfig();
-					updateDeviceContainerData();
+          console.log("Factory Reset successfully");
+          config = await deviceReadConfig();
+          updateDeviceContainerData();
         } catch (error) {
           console.error("Error:", error);
         }
@@ -971,8 +971,8 @@
           config = config & 0xFFFF;
 
           const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
-          const CONFIG_ANGLE_SNAP_ON = 1 << 14; // 0x4000
-          const CONFIG_HS_USB = 1 << 13;        // 0x2000
+          const CONFIG_ANGLE_SNAP_ON = 1 << 14;                    // 0x4000
+          const CONFIG_HS_USB = 1 << 13;                           // 0x2000
           const CONFIG_INTERVAL_Pos = 11;
           const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos; // 0x1800
           const CONFIG_LOD_Pos = 9;
@@ -980,52 +980,52 @@
           const CONFIG_DPI_Pos = 0;
           const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;          // 0x01FF
 
-          const swapButtons = (config & CONFIG_SWAP_LMB_AND_RMB) ? 1 : 0; // 1 bit: Off = 0, On = 1
-          const angleSnapping = (config & CONFIG_ANGLE_SNAP_ON) ? 1 : 0;  // 1 bit: Off = 0, On = 1
-          const usbSpeed = (config & CONFIG_HS_USB) ? 1 : 0;              // 1 bit: FS = 0, HS = 1 
+          const swapButtons = (config & CONFIG_SWAP_LMB_AND_RMB) ? 1 : 0;            // 1 bit: Off = 0, On = 1
+          const angleSnapping = (config & CONFIG_ANGLE_SNAP_ON) ? 1 : 0;             // 1 bit: Off = 0, On = 1
+          const usbSpeed = (config & CONFIG_HS_USB) ? 1 : 0;                         // 1 bit: FS = 0, HS = 1
           const pollingRate = (config & CONFIG_INTERVAL_Msk) >> CONFIG_INTERVAL_Pos; // 2 bits: 0 to 3
-          const liftOffDistance = (config & CONFIG_LOD_Msk) >> CONFIG_LOD_Pos;  // 2 bits: 0 to 2
-          const cpi = (config & CONFIG_DPI_Msk) >> CONFIG_DPI_Pos;  // 9 bits: 0 to 399
+          const liftOffDistance = (config & CONFIG_LOD_Msk) >> CONFIG_LOD_Pos;       // 2 bits: 0 to 2
+          const cpi = (config & CONFIG_DPI_Msk) >> CONFIG_DPI_Pos;                   // 9 bits: 0 to 399
 
           return {
               usbSpeed,
               pollingRate,
               liftOffDistance,
-              angleSnapping,  
-							swapButtons,
+              angleSnapping,
+              swapButtons,
               cpi
-					};
+          };
       }
 
       function deviceBuildConfig({swapButtons, angleSnapping, usbSpeed, pollingRate, liftOffDistance, cpi }) {
-				if (swapButtons != 0 && swapButtons != 1) throw new Error('swapButtons must be 0 or 1');
-				if (angleSnapping != 0 && angleSnapping != 1) throw new Error('angleSnapping must be 0 or 1');
-				if (usbSpeed != 0 && usbSpeed != 1) throw new Error('usbSpeed must be 0 or 1');
+        if (swapButtons != 0 && swapButtons != 1) throw new Error('swapButtons must be 0 or 1');
+        if (angleSnapping != 0 && angleSnapping != 1) throw new Error('angleSnapping must be 0 or 1');
+        if (usbSpeed != 0 && usbSpeed != 1) throw new Error('usbSpeed must be 0 or 1');
         if (!Number.isInteger(pollingRate) || pollingRate < 0 || pollingRate > 3) throw new Error('pollingRate must be an integer between 0 and 3');
         if (!Number.isInteger(liftOffDistance) || liftOffDistance < 0 || liftOffDistance > 3) throw new Error('liftOffDistance must be an integer between 0 and 3');
         if (!Number.isInteger(cpi) || cpi < 0 || cpi > 399) throw new Error('cpi must be an integer between 0 and 399');
 
-				const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
-				const CONFIG_ANGLE_SNAP_ON = 1 << 14;
-				const CONFIG_HS_USB = 1 << 13;
-				const CONFIG_INTERVAL_Pos = 11;
-				const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos;
-				const CONFIG_LOD_Pos = 9;
-				const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;
-				const CONFIG_DPI_Pos = 0;
-				const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;
+        const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
+        const CONFIG_ANGLE_SNAP_ON = 1 << 14;
+        const CONFIG_HS_USB = 1 << 13;
+        const CONFIG_INTERVAL_Pos = 11;
+        const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos;
+        const CONFIG_LOD_Pos = 9;
+        const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;
+        const CONFIG_DPI_Pos = 0;
+        const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;
 
-				let config = 0;
+        let config = 0;
 
-				if (usbSpeed == 1) config |= CONFIG_HS_USB;
-				config |= (pollingRate << CONFIG_INTERVAL_Pos) & CONFIG_INTERVAL_Msk;
-				config |= (liftOffDistance << CONFIG_LOD_Pos) & CONFIG_LOD_Msk;
-				if (angleSnapping == 1) config |= CONFIG_ANGLE_SNAP_ON;
-				if (swapButtons == 1) config |= CONFIG_SWAP_LMB_AND_RMB;
-				config |= (cpi << CONFIG_DPI_Pos) & CONFIG_DPI_Msk;
+        if (usbSpeed == 1) config |= CONFIG_HS_USB;
+        config |= (pollingRate << CONFIG_INTERVAL_Pos) & CONFIG_INTERVAL_Msk;
+        config |= (liftOffDistance << CONFIG_LOD_Pos) & CONFIG_LOD_Msk;
+        if (angleSnapping == 1) config |= CONFIG_ANGLE_SNAP_ON;
+        if (swapButtons == 1) config |= CONFIG_SWAP_LMB_AND_RMB;
+        config |= (cpi << CONFIG_DPI_Pos) & CONFIG_DPI_Msk;
 
-				// Ensure the result is a 16-bit unsigned integer
-				return config & 0xFFFF;
+        // Ensure the result is a 16-bit unsigned integer
+        return config & 0xFFFF;
       }
     </script>
     <footer>
