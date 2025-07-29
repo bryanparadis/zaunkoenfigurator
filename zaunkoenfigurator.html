@@ -598,6 +598,10 @@
         width: 20%
       }
 
+      td.center {
+        text-align: center;
+      }
+
       td.right {
         width: 80%;
         text-align: right;
@@ -627,12 +631,40 @@
         border-color: white;
         background: transparent;
       }
+
+      div#appContainer {
+        position: relative;
+      }
+
+      div#modal {
+        background-color: rgb(0,0,0,0.75);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 100;
+        justify-items: center;
+        align-content: center;
+        display:none;
+      }
+
+      div#modalDialogBox {
+        background-color: black;
+        width: auto;
+        height: auto;
+        align-items: center;
+        border: rgb(255,255,255,0.25);
+        border-style: solid;
+        border-width: 1px;
+      }
     </style>
   </head>
   <body>
     <main>
       <article>
         <h1>Zaunkoenfigurator</h1>
+        <div id="appContainer">
         <button id="connect" onclick=deviceConnect()>Connect</button>
         <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
         <div id="deviceContainer">
@@ -734,9 +766,34 @@
               </td>
             </tr>
           </table>
-          <button onclick=apply()>Apply</button>
-          <button onclick=factoryReset()>Factory Reset</button>
+          <button id="apply" onclick=apply()>Apply</button>
+          <button id="factoryReset" onclick="modalOpen('factory reset')">Factory Reset</button>
         </div>
+        <div id="modal">
+          <div id="modalDialogBox">
+            <table>
+              <tr>
+                <td id="modalMessage" class="center" colspan="3">
+                  Are you sure you want to factory reset?
+                </td>
+              </tr>
+              <tr>
+                <td><br/></td>
+              </tr>
+              <tr>
+                <td style="text-align: left">
+                  <button id="modalConfirm" onclick=>Confirm</button>
+                </td>
+                <td style="text-align: center">
+                  <button id="modalOk" onclick=modalClose()>Ok</button>
+                </td>
+                <td style="text-align: right">
+                  <button id="modalCancel" onclick=modalClose()>Cancel</button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        <div>
       </article>
     </main>
     <script>
@@ -745,6 +802,31 @@
       let config = null;
 
       updateDeviceContainerVisibility();
+
+      function modalOpen(type, message, callback) {
+        switch(type) {
+          case "info":
+            document.getElementById('modalMessage').innerText = 'You have been swenched';
+            document.getElementById('modalConfirm').style.visibility = 'hidden';
+            document.getElementById('modalOk').style.visibility = 'visible';
+            document.getElementById('modalCancel').style.visibility = 'hidden';
+          break;
+
+          case "factory reset":
+            document.getElementById('modalMessage').innerText = 'Are you sure you want to factory reset?';
+            document.getElementById('modalConfirm').style.visibility = 'visible';
+            document.getElementById('modalOk').style.visibility = 'hidden';
+            document.getElementById('modalCancel').style.visibility = 'visible';
+            document.getElementById('modalConfirm').onclick = factoryReset;
+          break;
+        }
+
+        document.getElementById('modal').style.display = 'inline';
+      }
+
+      function modalClose() {
+        document.getElementById('modal').style.display = 'none';
+      }
 
       // Function to update connectButton, disconnectButton and deviceContainer visibility
       function updateDeviceContainerVisibility() {
@@ -758,15 +840,15 @@
 
       // Listen for device plug
       navigator.hid.addEventListener('connect', (event) => {
-          console.log('Device plugged in:', event.device);
+        console.log('Device plugged in:', event.device);
       });
 
       // Listen for device unplug to hide config table
       navigator.hid.addEventListener('disconnect', (event) => {
-          if (event.device === device) {
-        deviceDisconnect();
-              console.log('Device unplugged');
-          }
+        if (event.device === device) {
+          deviceDisconnect();
+          console.log('Device unplugged');
+        }
       });
 
       document.getElementById('deviceUSBSpeed').addEventListener('input', function() {
@@ -814,7 +896,8 @@
       }
 
       async function factoryReset() {
-  deviceFactoryReset();
+        deviceFactoryReset();
+        modalClose();
       }
 
       async function deviceConnect() {
@@ -907,7 +990,6 @@
           readConfig = await deviceParseConfig(data[0]);
           console.log("Read config:", readConfig);
           return readConfig;
-
         } catch (error) {
           console.error("Error:", error);
         }
@@ -988,12 +1070,12 @@
           const cpi = (config & CONFIG_DPI_Msk) >> CONFIG_DPI_Pos;                   // 9 bits: 0 to 399
 
           return {
-              usbSpeed,
-              pollingRate,
-              liftOffDistance,
-              angleSnapping,
-              swapButtons,
-              cpi
+            usbSpeed,
+            pollingRate,
+            liftOffDistance,
+            angleSnapping,
+            swapButtons,
+            cpi
           };
       }
 
