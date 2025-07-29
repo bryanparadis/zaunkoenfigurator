@@ -812,6 +812,13 @@
             document.getElementById('modalCancel').style.visibility = 'hidden';
           break;
 
+          case "unsupported version":
+            document.getElementById('modalMessage').innerText = 'Unsupported firmware version. parawizard new v0.8 or higher required';
+            document.getElementById('modalConfirm').style.visibility = 'hidden';
+            document.getElementById('modalOk').style.visibility = 'visible';
+            document.getElementById('modalCancel').style.visibility = 'hidden';
+          break;
+
           case "factory reset":
             document.getElementById('modalMessage').innerText = 'Are you sure you want to factory reset?';
             document.getElementById('modalConfirm').style.visibility = 'visible';
@@ -914,6 +921,13 @@
           console.log("Device opened:", device.productName);
 
           version = await deviceReadVersion();
+
+          if (version.indexOf("parawizard new v0.8") == -1) {
+            modalOpen("unsupported version");
+            deviceDisconnect();
+            return;
+          }
+
           config = await deviceReadConfig();
           updateDeviceContainerData();
           updateDeviceContainerVisibility();
