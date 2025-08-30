@@ -668,7 +668,7 @@
 
       async function deviceConnect() {
         device = await navigator.usb.requestDevice({
-          filters: [{ vendorId: 0x0483 }]
+          filters: [{ vendorId: 0x0483, productId: 0xDF11 }]
         });
         await device.open();
         console.log("Opened Device:", device.productName);
