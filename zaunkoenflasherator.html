@@ -633,9 +633,10 @@
     <main>
       <article>
         <h1>Zaunkoenflasherator</h1>
-        <button id="connect" onclick=deviceConnect()>Connect</button>
-        <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
-        <button id="flash" onclick=deviceFlash()>Flash</button>
+        <button id="connect" onclick=deviceConnect()>Update Firmware</button>
+        <button id="disconnect" onclick=deviceDisconnect() hidden>Disconnect</button>
+        <button id="flash" onclick=deviceFlash() hidden>Flash</button>
+        <div id="modalMessage"></div>
       </article>
     </main>
     <script>
@@ -647,26 +648,37 @@
       getFirmware();
 
       async function getFirmware() {
-        let response = await fetch("./parawizard new v0.8.1.bin");
+        try {
+          const file = "./parawizard new v0.8.1.bin";
+          console.log("Fetching Firmware: ", file);
+          let response = await fetch(file);
 
-        const arrayBuffer = await response.arrayBuffer();
-        const bytes = new Uint8Array(arrayBuffer);
-        const chunkSize = 1024;
-        const chunks = [];
-  
-        for(let i = 0; i < bytes.length; i += chunkSize) {
-          chunks.push(bytes.slice(i, i + chunkSize));
+          const arrayBuffer = await response.arrayBuffer();
+          const bytes = new Uint8Array(arrayBuffer);
+          const chunkSize = 1024;
+          const chunks = [];
+
+          for(let i = 0; i < bytes.length; i += chunkSize) {
+            chunks.push(bytes.slice(i, i + chunkSize));
+          }
+
+          console.log("Firmware Chunks: " + chunks.length);
+
+          firmware = {
+            chunks: chunks,
+            version: 'parawizard new v0.8.1.bin',
+          };
+        } catch (error) {
+            alert(error);
         }
-
-        console.log("Firmware Chunks: " + chunks.length);
-
-        firmware = { 
-          chunks: chunks,
-          version: 'parawizard new v0.8.1.bin',
-        };
       };
 
       async function deviceConnect() {
+        alert('After reading below and closing this message:\n' +
+              '1) A window will open where you will be able to select your mouse\n' +
+              '2) Replug your mouse holding down the right button for 10 seconds\n' +
+              '3) Your mouse should show up in the list\n' +
+              '4) Select your mouse by pressing tab, down then enter or using a second \n');
         device = await navigator.usb.requestDevice({
           filters: [{ vendorId: 0x0483, productId: 0xDF11 }]
         });
@@ -676,7 +688,7 @@
         console.log("Selected Configuration: 1");
         await device.claimInterface(0);
         console.log("Claimed Interface: 0");
-
+        await deviceFlash();
       };
 
       async function deviceDisconnect() {
@@ -747,12 +759,14 @@
 
           const dataView = (await device.controlTransferIn(packet, 6)).data;
 
-          return {
+          const status = {
             bStatus:      dataView.getUint8(0),
             bPollTimeout: (dataView.getUint8(3) << 16) + (dataView.getUint8(2) << 8) + dataView.getUint8(1),
             bState:       dataView.getUint8(4),
             iString:      dataView.getUint8(5)
           };
+
+          return status;
 
         } catch (error) {
           console.log('Error dfuGetStatus', error);
@@ -762,6 +776,7 @@
 
       async function dfuPrepDownload(first, address) {
         try {
+          console.log("dfuPrepDownload");
           const packet = {
             requestType: 'class',
             recipient:   'interface',
@@ -789,8 +804,8 @@
       }
   
       async function dfuDownload(data) {
-
         try {
+          console.log("dfuDownload");
           const packet = {
             requestType: 'class',
             recipient:   'interface',
@@ -811,6 +826,7 @@
 
       async function dfuFinish() {
         try {
+          console.log("dfuFinish");
           const packet = {
             requestType: 'class',
             recipient:   'interface',
@@ -828,7 +844,9 @@
       }
 
       async function dfuReset() {
-            const packet = {
+        try {
+          console.log("dfuReset");
+          const packet = {
             requestType: 'class',
             recipient:   'interface',
             request:     0x3,
@@ -836,13 +854,15 @@
             index:       0
           }
 
-        // This always errors as the device restarts
-        await device.controlTransferIn(packet, 6);
-
+          await device.controlTransferIn(packet, 6);
+        } catch {
+          // Suppress as dfuReset always errors as the device restarts
+        }
       }
 
       async function dfuAbort() {
         try {
+          console.log("dfuAbort");
           const packet = {
             requestType: 'class',
             recipient:   'interface',
@@ -858,6 +878,17 @@
           return null;
         }
       }
+
+      // Listen for device plug
+      navigator.usb.addEventListener('connect', (event) => {
+        console.log('Device connected:', event.device.productName);
+        document.getElementById('modalMessage').innerText = 'You have been swenched';
+      });
+
+      // Listen for device unplug to hide config table
+      navigator.usb.addEventListener('disconnect', (event) => {
+        console.log('Device disconnected:', event.device.productName);
+      });
 
       function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
