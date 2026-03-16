@@ -804,6 +804,8 @@
 
       updateDeviceContainerVisibility();
 
+      deviceAutoConnect();
+
       function modalOpen(type, message, callback) {
         switch(type) {
           case "info":
@@ -909,6 +911,21 @@
         modalClose();
       }
 
+      async function deviceAutoConnect() {
+        try {
+          const devices = await navigator.hid.getDevices({
+            filters: [{
+              vendorId:  0x0483, // STMicroelectronics
+              productId: 0xA462  // M3K
+            }]});
+          device = devices[0];
+          if (!device) return;
+          deviceOpen();
+        } catch {
+          console.log("eh");
+        }
+      }
+
       async function deviceConnect() {
         try {
           const devices = await navigator.hid.requestDevice({
@@ -918,7 +935,14 @@
             }]});
           device = devices[0];
           if (!device) return;
+          await deviceOpen();
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
 
+      async function deviceOpen() {
+        try {
           await device.open();
           console.log("Device opened:", device.productName);
 
@@ -933,8 +957,8 @@
           config = await deviceReadConfig();
           updateDeviceContainerData();
           updateDeviceContainerVisibility();
-        } catch (error) {
-          console.error("Error:", error);
+        } catch {
+          console.log("Error opening device");
         }
       }
 
