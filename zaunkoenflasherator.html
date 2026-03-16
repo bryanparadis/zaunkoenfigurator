@@ -649,7 +649,7 @@
 
       async function getFirmware() {
         try {
-          const file = "./parawizard new v0.8.1.bin";
+          const file = "./parawizard new v0.8.3.bin";
           console.log("Fetching Firmware: ", file);
           let response = await fetch(file);
 
@@ -666,7 +666,7 @@
 
           firmware = {
             chunks: chunks,
-            version: 'parawizard new v0.8.1.bin',
+            version: 'parawizard new v0.8.3.bin',
           };
         } catch (error) {
             alert(error);
