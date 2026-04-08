@@ -729,9 +729,6 @@
               </td>
               <td class="right">
                 <select id="deviceLiftOffDistance">
-                  <option value=0>1&thinsp;mm</option>
-                  <option value=1>2&thinsp;mm</option>
-                  <option value=2>3&thinsp;mm</option>
                 </select>
               </td>
             </tr>
@@ -798,9 +795,22 @@
       </article>
     </main>
     <script>
+	  const supported_devices = [
+		    {
+              vendorId:  0x0483, // STMicroelectronics
+			  productId: 0xa462  // M3K
+			},
+			{
+              vendorId:  0x0483, // STMicroelectronics
+			  productId: 0xa3cf  // M2K
+			}
+	  ];
+
       let device = null;
       let version = null;
       let config = null;
+	  let cpi_step = null;
+	  let cpi_max = null;
 
       updateDeviceContainerVisibility();
 
@@ -887,19 +897,19 @@
       // Update CPI text input field when slider changes
       document.getElementById('deviceCPIRange').addEventListener('input', function() {
         document.getElementById('deviceCPIText').value = this.value;
-        config.cpi = Number(this.value) / 50 - 1;
+        config.cpi = Number(this.value) / cpi_step - 1;
       });
 
-      // Check bounds, round to nearest 50 and update CPI slider when text input field changes
+      // Check bounds, round to nearest cpi_step and update CPI slider when text input field changes
       document.getElementById('deviceCPIText').addEventListener('change', function() {
-        // Make sure 50 minimum
-        if (isNaN(this.value) || this.value < 50) this.value = 50;
-        // Make sure 20000 maximum
-        if (this.value > 20000) this.value = 20000;
-        // Round to nearest 50
-        this.value = Math.round(this.value / 50) * 50;
+        // Make sure cpi_step is minimum
+        if (isNaN(this.value) || this.value < cpi_step) this.value = cpi_step;
+        // Make sure cpi_max is maximum
+        if (this.value > cpi_max) this.value = cpi_max;
+        // Round to nearest cpi_step
+        this.value = Math.round(this.value / cpi_step) * cpi_step;
           document.getElementById('deviceCPIRange').value = this.value;
-          config.cpi = Number(this.value) / 50 - 1;
+          config.cpi = Number(this.value) / cpi_step - 1;
       });
 
       async function apply() {
@@ -913,11 +923,7 @@
 
       async function deviceAutoConnect() {
         try {
-          const devices = await navigator.hid.getDevices({
-            filters: [{
-              vendorId:  0x0483, // STMicroelectronics
-              productId: 0xA462  // M3K
-            }]});
+			const devices = await navigator.hid.getDevices({filters: supported_devices});
           device = devices[0];
           if (!device) return;
           deviceOpen();
@@ -928,11 +934,7 @@
 
       async function deviceConnect() {
         try {
-          const devices = await navigator.hid.requestDevice({
-            filters: [{
-              vendorId:  0x0483, // STMicroelectronics
-              productId: 0xA462  // M3K
-            }]});
+          const devices = await navigator.hid.requestDevice({filters: supported_devices});
           device = devices[0];
           if (!device) return;
           await deviceOpen();
@@ -943,6 +945,12 @@
 
       async function deviceOpen() {
         try {
+		  if (!device.collections.some(col => col.usagePage === 65280 )) {
+			console.log("Device firmware too old. parawizard new v0.8.0 or newer is required");
+			alert("Device firmware too old. parawizard new v0.8.0 or newer is required");
+			return;
+		  }
+
           await device.open();
           console.log("Device opened:", device.productName);
 
@@ -955,6 +963,14 @@
           }
 
           config = await deviceReadConfig();
+		  if (device.productId == 0xa3cf) {
+			  cpi_step = 100;
+			  cpi_max = 12000;
+		  } else {
+			  cpi_step = 50;
+			  cpi_max = 20000;
+		  }
+
           updateDeviceContainerData();
           updateDeviceContainerVisibility();
         } catch {
@@ -981,14 +997,36 @@
         document.getElementById('deviceUSBSpeed').value = config.usbSpeed;
         document.getElementById('devicePollingRate').value = config.pollingRate;
         // Setting deviceUSBSpeed doesn't dispatch the input event so we fire manually
-        deviceUSBSpeed = document.getElementById('deviceUSBSpeed');
+        let deviceUSBSpeed = document.getElementById('deviceUSBSpeed');
         deviceUSBSpeed.value = config.usbSpeed;
         deviceUSBSpeed.dispatchEvent(new Event('input', {bubbles: true}));
-        document.getElementById('deviceLiftOffDistance').value = config.liftOffDistance;
+		let deviceLODSelect = document.getElementById('deviceLiftOffDistance');
+		deviceLODSelect.innerHTML = '';
+
+		let lods = null;
+
+		if (device.productId == 0xa3cf) {
+			lods = [{value: 2, text: "2 mm"}, {value: 3, text: "3 mm"}];
+		} else {
+			lods = [{value: 0, text: "1 mm"},{value: 1, text: "2 mm"}, {value: 2, text: "3 mm"}];
+		}
+
+		for (const lod of lods) {
+			const option = document.createElement("option");
+			option.value = lod.value;
+			option.textContent = lod.text;
+			deviceLODSelect.appendChild(option);
+		}
+
+        deviceLODSelect.value = config.liftOffDistance;
         document.getElementById('deviceAngleSnapping').value = config.angleSnapping;
         document.getElementById('deviceSwapButtons').value = config.swapButtons;
-        document.getElementById('deviceCPIRange').value = (config.cpi + 1) * 50;
-        document.getElementById('deviceCPIText').value = (config.cpi + 1) * 50;
+		let deviceCPIRange = document.getElementById('deviceCPIRange');
+		deviceCPIRange.value = (config.cpi + 1) * cpi_step;
+        deviceCPIRange.min = cpi_step;
+        deviceCPIRange.max = cpi_max;
+        deviceCPIRange.step = cpi_step;
+        document.getElementById('deviceCPIText').value = (config.cpi + 1) * cpi_step;
       }
 
       async function deviceReadVersion() {
@@ -1127,8 +1165,13 @@
         if (angleSnapping != 0 && angleSnapping != 1) throw new Error('angleSnapping must be 0 or 1');
         if (usbSpeed != 0 && usbSpeed != 1) throw new Error('usbSpeed must be 0 or 1');
         if (!Number.isInteger(pollingRate) || pollingRate < 0 || pollingRate > 3) throw new Error('pollingRate must be an integer between 0 and 3');
-        if (!Number.isInteger(liftOffDistance) || liftOffDistance < 0 || liftOffDistance > 3) throw new Error('liftOffDistance must be an integer between 0 and 3');
-        if (!Number.isInteger(cpi) || cpi < 0 || cpi > 399) throw new Error('cpi must be an integer between 0 and 399');
+		if (device.productId == 0xa3cf) {
+			if (!Number.isInteger(liftOffDistance) || liftOffDistance < 2 || liftOffDistance > 3) throw new Error('liftOffDistance must be either 2 or 3');
+			if (!Number.isInteger(cpi) || cpi < 0 || cpi > 119) throw new Error('cpi must be an integer between 0 and 119');
+		} else {
+			if (!Number.isInteger(liftOffDistance) || liftOffDistance < 0 || liftOffDistance > 3) throw new Error('liftOffDistance must be an integer between 0 and 3');
+			if (!Number.isInteger(cpi) || cpi < 0 || cpi > 399) throw new Error('cpi must be an integer between 0 and 399');
+		}
 
         const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
         const CONFIG_ANGLE_SNAP_ON = 1 << 14;
