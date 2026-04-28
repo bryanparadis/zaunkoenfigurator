@@ -666,132 +666,133 @@
       <article>
         <h1>Zaunkoenfigurator</h1>
         <div id="appContainer">
-        <button id="connect" onclick=deviceConnect()>Connect</button>
-        <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
-        <div id="deviceContainer">
-          <table>
-            <tr>
-              <td class="left">
-                Model
-              </td>
-              <td class="right">
-                <div id="deviceModel"></div>
-              </td>
-            </tr>
-            <tr>
-              <td class="left">
-                Firmware Version
-              </td>
-              <td class="right">
-                <div id="deviceVersion"></div>
-              </td>
-            </tr>
-            <tr>
-              <td><br></td><td></td>
-            </tr>
-            <tr>
-              <td class="left">
-                USB Speed
-              </td>
-              <td class="right">
-                <select id="deviceUSBSpeed">
-                  <option value=1>High-Speed</option>
-                  <option value=0>Full-Speed</option>
-                </select>
-              </td>
-            </tr>
-            <tr id=rowPollingRateFullSpeed style="display: none;">
-              <td class="left">
-                Polling Rate
-              </td>
-              <td class="right">
-                <select id="devicePollingRateFullSpeed">
-                  <option value=0>1000Hz</option>
-                </select>
-              </td>
-            </tr>
-            <tr id=rowPollingRateHighSpeed>
-              <td class="left">
-                Polling Rate
-              </td>
-              <td class="right">
-                <select id="devicePollingRate">
-                  <option value=0>8000&thinsp;Hz</option>
-                  <option value=1>4000&thinsp;Hz</option>
-                  <option value=2>2000&thinsp;Hz</option>
-                  <option value=3>1000&thinsp;Hz</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="left">
-                Lift Off Distance
-              </td>
-              <td class="right">
-                <select id="deviceLiftOffDistance">
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="left">
-                Angle Snapping
-              </td>
-              <td class="right">
-                <select id="deviceAngleSnapping">
-                  <option value=0>Off</option>
-                  <option value=1>On</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="left">
-                Primary Button
-              </td>
-              <td class="right">
-                <select id="deviceSwapButtons">
-                  <option value=0>Left</option>
-                  <option value=1>Right</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td class="left">
-                Sensitivity
-              </td>
-              <td class="right">
-                <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
-                <input id="deviceCPIText" type="text">
-              </td>
-            </tr>
-          </table>
-          <button id="apply" onclick=apply()>Apply</button>
-          <button id="factoryReset" onclick="modalOpen('factory reset')">Factory Reset</button>
-        </div>
-        <div id="modal">
-          <div id="modalDialogBox">
+          <button id="connect" onclick=deviceConnect()>Connect</button>
+          <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
+          <div id="deviceContainer">
             <table>
               <tr>
-                <td id="modalMessage" class="center" colspan="3">
-                  Are you sure you want to factory reset?
+                <td class="left">
+                  Model
+                </td>
+                <td class="right">
+                  <div id="deviceModel"></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="left">
+                  Firmware Version
+                </td>
+                <td class="right">
+                  <div id="deviceVersion"></div>
                 </td>
               </tr>
               <tr>
                 <td><br></td><td></td>
               </tr>
               <tr>
-                <td style="text-align: left">
-                  <button id="modalConfirm" onclick=>Confirm</button>
+                <td class="left">
+                  USB Speed
                 </td>
-                <td style="text-align: center">
-                  <button id="modalOk" onclick=modalClose()>Ok</button>
+                <td class="right">
+                  <select id="deviceUSBSpeed">
+                    <option value=1>High-Speed</option>
+                    <option value=0>Full-Speed</option>
+                  </select>
                 </td>
-                <td style="text-align: right">
-                  <button id="modalCancel" onclick=modalClose()>Cancel</button>
+              </tr>
+              <tr id=rowPollingRateFullSpeed style="display: none;">
+                <td class="left">
+                  Polling Rate
+                </td>
+                <td class="right">
+                  <select id="devicePollingRateFullSpeed">
+                    <option value=0>1000Hz</option>
+                  </select>
+                </td>
+              </tr>
+              <tr id=rowPollingRateHighSpeed>
+                <td class="left">
+                  Polling Rate
+                </td>
+                <td class="right">
+                  <select id="devicePollingRate">
+                    <option value=0>8000&thinsp;Hz</option>
+                    <option value=1>4000&thinsp;Hz</option>
+                    <option value=2>2000&thinsp;Hz</option>
+                    <option value=3>1000&thinsp;Hz</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="left">
+                  Lift Off Distance
+                </td>
+                <td class="right">
+                  <select id="deviceLiftOffDistance">
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="left">
+                  Angle Snapping
+                </td>
+                <td class="right">
+                  <select id="deviceAngleSnapping">
+                    <option value=0>Off</option>
+                    <option value=1>On</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="left">
+                  Primary Button
+                </td>
+                <td class="right">
+                  <select id="deviceSwapButtons">
+                    <option value=0>Left</option>
+                    <option value=1>Right</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="left">
+                  Sensitivity
+                </td>
+                <td class="right">
+                  <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
+                  <input id="deviceCPIText" type="text">
                 </td>
               </tr>
             </table>
+            <button id="apply" onclick=apply()>Apply</button>
+            <button id="factoryReset" onclick="modalOpen('factory reset')">Factory Reset</button>
           </div>
-        <div>
+          <div id="modal">
+            <div id="modalDialogBox">
+              <table>
+                <tr>
+                  <td id="modalMessage" class="center" colspan="3">
+                    Are you sure you want to factory reset?
+                  </td>
+                </tr>
+                <tr>
+                  <td><br></td><td></td>
+                </tr>
+                <tr>
+                  <td style="text-align: left">
+                    <button id="modalConfirm">Confirm</button>
+                  </td>
+                  <td style="text-align: center">
+                    <button id="modalOk" onclick=modalClose()>Ok</button>
+                  </td>
+                  <td style="text-align: right">
+                    <button id="modalCancel" onclick=modalClose()>Cancel</button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+		  </div>
+        </div>
       </article>
     </main>
     <script>
