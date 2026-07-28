@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="robots" content="none">
     <title>Zaunkoenfigurator</title>
@@ -7,304 +9,115 @@
     <link rel="icon" href="https://zaunkoenig.co/favicon.ico" sizes="any">
     <link rel="icon" href="https://zaunkoenig.co/favicon.svg" type="image/svg+xml">
     <style>
-      body {
-        margin: 0;
-        max-width: 864px;
-        box-sizing: border-box;
-        font-family: IBM Plex Sans, Helvetica, sans-serif;
-        line-height: 1.5;
-        color: #f0f0f0;
-        background: #000;
-        overflow-x: hidden;
-        padding-left: 1em;
-        padding-right: 1em;
-        margin-right: auto;
-        margin-left: auto;
-      }
-      footer {
-        padding-top: 15vh;
-      }
-      nav {
-        text-align: center;
-        margin-top: 20vh;
-      }
-      .logobild,
-      .logolink {
-        fill: #f0f0f0;
-        display: block;
-        text-align: center;
-        margin: 0 auto;
-        margin-top: 2em;
-        margin-bottom: 1em;
-      }
-      blockquote {
-        font-style: italic;
-        display: block;
-        padding: 1em 0 1em 1em;
-      }
-      blockquote p + p,
-      blockquote p,
-      blockquote + p,
-      h1,
-      h2,
-      h3,
-      h4,
-      header + p,
-      h2 + p,
-      h3 + p,
-      h4 + p,
-      p + p {
-        margin-top: 1em;
-      }
-      h1 + p {
-        margin-top: 0.67em;
-      }
-      p + h1,
-      p + h2,
-      p + h3,
-      p + h4,
-      ul + h1,
-      ul + h2,
-      ul + h3,
-      ul + h4,
-      ol + h1,
-      ol + h2,
-      ol + h3,
-      ol + h4 {
-        margin-top: 2em;
-      }
-      h1 + h2,
-      h2 + h3,
-      h3 + h4 {
-        margin-top: 1em;
-      }
-      /*The following three lines of code are required to make the margin between <p> elements following <h4> elements smaller*/
-      h4 + p {
-        margin-top: -1em;
-      }
-      img + p,
-      picture + p,
-      img + h1,
-      picture + h1,
-      img + h2,
-      picture + h2,
-      img + h3,
-      picture + h3,
-      img + h4,
-      picture + h4 {
-        margin-top: 2em;
-      }
-      .kleingedrucktes {
-        color: #999;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-      }
-      /*for-small-phones*/
-      .logobild,
-      .logolink {
-        height: 38px;
-      }
-      h1 {
-        font-size: 50px;
-        line-height: 1.1;
-      }
-      h2 {
-        font-size: 22px;
-        line-height: 1.3;
-      }
-      h3 {
-        font-size: 18px;
-        line-height: 1.7;
-      }
-      h4,
-      p,
-      ol,
-      ul,
-      blockquote,
-      time,
-      span,
-      address,
-      nav,
-      .button,
-      .form__input,
-      .form__input-and-button,
-      .form__button {
-        font-size: 17px;
-        line-height: 1.7;
-      }
-      /*for-slightly-larger-phone-only*/
-      @media screen and (min-width: 415px) {
-        h1 {
-          font-size: 60px;
-          line-height: 1.1;
-        }
-        h2 {
-          font-size: 24px;
-          line-height: 1.3;
-        }
-      }
-      /*for-phone-only*/
-      @media screen and (min-width: 667px) {
-        .kleingedrucktes {
-          font-size: 15px;
-          line-height: 1.3;
-        }
-        h1 {
-          font-size: 65px;
-          line-height: 1.1;
-        }
-        h2 {
-          font-size: 28px;
-          line-height: 1.3;
-        }
-        h3 {
-          font-size: 19px;
-          line-height: 1.7;
-        }
-        h4,
-        p,
-        ol,
-        ul,
-        blockquote,
-        time,
-        span,
-        address,
-        nav,
-        .button,
-        .form__input,
-        .form__input-and-button,
-        .form__button {
-          font-size: 18px;
-          line-height: 1.7;
-        }
-      }
-      /*for-tablet-portrait-up*/
-      @media screen and (min-width: 768px) {
-        .kleingedrucktes {
-          font-size: 17px;
-          line-height: 1.5;
-        }
-        .logobild,
-        .logolink {
-          height: 48px;
-        }
-        h1 {
-          font-size: 70px;
-          line-height: 1.1;
-        }
-        h2 {
-          font-size: 36px;
-          line-height: 1.3333333333;
-        }
-        h3 {
-          font-size: 21px;
-          line-height: 1.7;
-        }
-        h4,
-        p,
-        ol,
-        ul,
-        blockquote,
-        time,
-        span,
-        address,
-        nav,
-        .button,
-        .form__input,
-        .form__input-and-button,
-        .form__button {
-          font-size: 20px;
-          line-height: 1.7;
-        }
-      }
-      /*for-tablet-landscape-up*/
-      @media screen and (min-width: 864px) {
-        .kleingedrucktes {
-          font-size: 17px;
-          line-height: 1.6;
-        }
-        .logobild,
-        .logolink {
-          height: 50px;
-        }
-        h3 {
-          font-size: 22px;
-          line-height: 1.75;
-        }
-        h4,
-        p,
-        ol,
-        ul,
-        blockquote,
-        time,
-        span,
-        address,
-        nav,
-        .button,
-        .form__input,
-        .form__input-and-button,
-        .form__button {
-          font-size: 21px;
-          line-height: 1.75;
-        }
-      }
-      /*for-desktop-up*/
-      @media screen and (min-width: 1184px) {
-        .kleingedrucktes {
-          font-size: 18px;
-          line-height: 1.6;
-        }
-        .logobild,
-        .logolink {
-          height: 50px;
-        }
-        h3 {
-          font-size: 23px;
-          line-height: 1.8;
-        }
-        h4,
-        p,
-        ol,
-        ul,
-        blockquote,
-        time,
-        span,
-        address,
-        nav,
-        .button,
-        .form__input,
-        .form__input-and-button,
-        .form__button {
-          font-size: 22px;
-          line-height: 1.8;
-        }
-      }
-      /*for-big-desktop-up*/
-      @media screen and (min-width: 1800px) {
         body {
-          max-width: none;
-          max-width: 982px;
+            margin: 0;
+            max-width: 864px;
+            box-sizing: border-box;
+            font-family: IBM Plex Sans, Helvetica, sans-serif;
+            line-height: 1.5;
+            color: #f0f0f0;
+            background: #000;
+            overflow-x: hidden;
+            padding-left: 1em;
+            padding-right: 1em;
+            margin-right: auto;
+            margin-left: auto;
         }
-        .kleingedrucktes {
-          font-size: 18px;
-          line-height: 1.65;
+        footer {
+            padding-top: 15vh;
+        }
+        nav {
+            text-align: center;
+            margin-top: 20vh;
         }
         .logobild,
         .logolink {
-          width: 46px;
+            fill: #f0f0f0;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+        blockquote {
+            font-style: italic;
+            display: block;
+            padding: 1em 0 1em 1em;
+        }
+        blockquote p + p,
+        blockquote p,
+        blockquote + p,
+        h1,
+        h2,
+        h3,
+        h4,
+        header + p,
+        h2 + p,
+        h3 + p,
+        h4 + p,
+        p + p {
+            margin-top: 1em;
+        }
+        h1 + p {
+            margin-top: 0.67em;
+        }
+        p + h1,
+        p + h2,
+        p + h3,
+        p + h4,
+        ul + h1,
+        ul + h2,
+        ul + h3,
+        ul + h4,
+        ol + h1,
+        ol + h2,
+        ol + h3,
+        ol + h4 {
+            margin-top: 2em;
+        }
+        h1 + h2,
+        h2 + h3,
+        h3 + h4 {
+            margin-top: 1em;
+        }
+        /*The following three lines of code are required to make the margin between <p> elements following <h4> elements smaller*/
+        h4 + p {
+            margin-top: -1em;
+        }
+        img + p,
+        picture + p,
+        img + h1,
+        picture + h1,
+        img + h2,
+        picture + h2,
+        img + h3,
+        picture + h3,
+        img + h4,
+        picture + h4 {
+            margin-top: 2em;
+        }
+        .kleingedrucktes {
+            color: #999;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        /*for-small-phones*/
+        .logobild,
+        .logolink {
+            height: 38px;
         }
         h1 {
-          font-size: 75px;
-          line-height: 1.2;
+            font-size: 50px;
+            line-height: 1.1;
         }
         h2 {
-          font-size: 40px;
-          line-height: 1.5;
+            font-size: 22px;
+            line-height: 1.3;
         }
         h3 {
-          font-size: 25px;
-          line-height: 1.9;
+            font-size: 18px;
+            line-height: 1.7;
         }
         h4,
         p,
@@ -319,955 +132,1148 @@
         .form__input,
         .form__input-and-button,
         .form__button {
-          font-size: 24px;
-          line-height: 1.85;
+            font-size: 17px;
+            line-height: 1.7;
         }
-      }
-      /*CSS just for blog.html*/
-      header + article,
-      article + article {
-        margin-top: 7rem;
-      }
-      /*CSS just for blog articles*/
-      header > h1 {
-        margin-bottom: 32px;
-      }
-      address {
-        display: inline;
-      }
-      ol,
-      ul {
-        margin: 0;
-        padding: 0;
-      }
-      ol li,
-      ul li {
-        margin-left: 1.5em;
-        padding-left: 0;
-      }
-      li > ul {
-        margin-top: 0;
-      }
-      /*CSS for newsletter opt-in*/
-      html {
-        cursor: default;
-      }
-      .container {
-        margin: 48px 0;
-      }
-      @media only screen and (min-width: 768px) {
+        /*for-slightly-larger-phone-only*/
+        @media screen and (min-width: 415px) {
+            h1 {
+                font-size: 60px;
+                line-height: 1.1;
+            }
+            h2 {
+                font-size: 24px;
+                line-height: 1.3;
+            }
+        }
+        /*for-phone-only*/
+        @media screen and (min-width: 667px) {
+            .kleingedrucktes {
+                font-size: 15px;
+                line-height: 1.3;
+            }
+            h1 {
+                font-size: 65px;
+                line-height: 1.1;
+            }
+            h2 {
+                font-size: 28px;
+                line-height: 1.3;
+            }
+            h3 {
+                font-size: 19px;
+                line-height: 1.7;
+            }
+            h4,
+            p,
+            ol,
+            ul,
+            blockquote,
+            time,
+            span,
+            address,
+            nav,
+            .button,
+            .form__input,
+            .form__input-and-button,
+            .form__button {
+                font-size: 18px;
+                line-height: 1.7;
+            }
+        }
+        /*for-tablet-portrait-up*/
+        @media screen and (min-width: 768px) {
+            .kleingedrucktes {
+                font-size: 17px;
+                line-height: 1.5;
+            }
+            .logobild,
+            .logolink {
+                height: 48px;
+            }
+            h1 {
+                font-size: 70px;
+                line-height: 1.1;
+            }
+            h2 {
+                font-size: 36px;
+                line-height: 1.3333333333;
+            }
+            h3 {
+                font-size: 21px;
+                line-height: 1.7;
+            }
+            h4,
+            p,
+            ol,
+            ul,
+            blockquote,
+            time,
+            span,
+            address,
+            nav,
+            .button,
+            .form__input,
+            .form__input-and-button,
+            .form__button {
+                font-size: 20px;
+                line-height: 1.7;
+            }
+        }
+        /*for-tablet-landscape-up*/
+        @media screen and (min-width: 864px) {
+            .kleingedrucktes {
+                font-size: 17px;
+                line-height: 1.6;
+            }
+            .logobild,
+            .logolink {
+                height: 50px;
+            }
+            h3 {
+                font-size: 22px;
+                line-height: 1.75;
+            }
+            h4,
+            p,
+            ol,
+            ul,
+            blockquote,
+            time,
+            span,
+            address,
+            nav,
+            .button,
+            .form__input,
+            .form__input-and-button,
+            .form__button {
+                font-size: 21px;
+                line-height: 1.75;
+            }
+        }
+        /*for-desktop-up*/
+        @media screen and (min-width: 1184px) {
+            .kleingedrucktes {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+            .logobild,
+            .logolink {
+                height: 50px;
+            }
+            h3 {
+                font-size: 23px;
+                line-height: 1.8;
+            }
+            h4,
+            p,
+            ol,
+            ul,
+            blockquote,
+            time,
+            span,
+            address,
+            nav,
+            .button,
+            .form__input,
+            .form__input-and-button,
+            .form__button {
+                font-size: 22px;
+                line-height: 1.8;
+            }
+        }
+        /*for-big-desktop-up*/
+        @media screen and (min-width: 1800px) {
+            body {
+                max-width: none;
+                max-width: 982px;
+            }
+            .kleingedrucktes {
+                font-size: 18px;
+                line-height: 1.65;
+            }
+            .logobild,
+            .logolink {
+                width: 46px;
+            }
+            h1 {
+                font-size: 75px;
+                line-height: 1.2;
+            }
+            h2 {
+                font-size: 40px;
+                line-height: 1.5;
+            }
+            h3 {
+                font-size: 25px;
+                line-height: 1.9;
+            }
+            h4,
+            p,
+            ol,
+            ul,
+            blockquote,
+            time,
+            span,
+            address,
+            nav,
+            .button,
+            .form__input,
+            .form__input-and-button,
+            .form__button {
+                font-size: 24px;
+                line-height: 1.85;
+            }
+        }
+        /*CSS just for blog.html*/
+        header + article,
+        article + article {
+            margin-top: 7rem;
+        }
+        /*CSS just for blog articles*/
+        header > h1 {
+            margin-bottom: 32px;
+        }
+        address {
+            display: inline;
+        }
+        ol,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        ol li,
+        ul li {
+            margin-left: 1.5em;
+            padding-left: 0;
+        }
+        li > ul {
+            margin-top: 0;
+        }
+        /*CSS for newsletter opt-in*/
+        html {
+            cursor: default;
+        }
         .container {
-          margin: 64px 0;
+            margin: 48px 0;
         }
-      }
-      @media only screen and (min-width: 768px) {
-        .container__text p + p {
-          margin: 32px 0;
+        @media only screen and (min-width: 768px) {
+            .container {
+                margin: 64px 0;
+            }
         }
-      }
-      button,
-      input,
-      select,
-      textarea {
-        background-color: transparent;
-        border-style: none;
-        color: inherit;
-        font-size: 1em;
-        margin: 0;
-      }
-      button,
-      input {
-        overflow: visible;
-      }
-      button,
-      select {
-        text-transform: none;
-      }
-      button,
-      html [type="button"],
-      [type="reset"],
-      [type="submit"] {
-        appearance: button;
-      }
-      ::-moz-focus-inner {
-        border-style: none;
-        padding: 0;
-      }
-      :-moz-focusring {
-        outline: 1px dotted ButtonText;
-      }
-      fieldset {
-        border: 1px solid #535353;
-        margin: 0 2px;
-        padding: 0.35em 0.625em 0.75em;
-      }
-      legend {
-        display: table;
-        max-width: 100%;
-        padding: 0;
-        white-space: normal;
-      }
-      textarea {
-        overflow: auto;
-        resize: vertical;
-      }
-      ::-webkit-input-placeholder {
-        color: #a6a6a6;
-        opacity: 0.54;
-      }
-      [aria-busy="true"] {
-        cursor: progress;
-      }
-      [aria-controls] {
-        cursor: pointer;
-      }
-      [aria-disabled] {
-        cursor: default;
-      }
-      a,
-      button,
-      input,
-      select,
-      textarea,
-      [tabindex] {
-        -ms-touch-action: manipulation;
-        touch-action: manipulation;
-      }
-      button:hover,
-      button:focus,
-      input:hover,
-      input:focus {
-        outline: 0;
-        transition: 0.2s ease-in-out;
-      }
-      .button {
-        display: inline;
-        padding: 11px 12px;
-        width: auto;
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
-        background: #f0f0f0;
-        border: 1px solid #009ec9;
-        color: #f0f0f0;
-      }
-      ::-webkit-input-placeholder {
-        color: #a6a6a6;
-      }
-      :-moz-placeholder {
-        color: #a6a6a6;
-      }
-      ::-moz-placeholder {
-        color: #a6a6a6;
-      }
-      :-ms-input-placeholder {
-        color: #a6a6a6;
-      }
-      @media screen and (min-width: 768px) {
+        @media only screen and (min-width: 768px) {
+            .container__text p + p {
+                margin: 32px 0;
+            }
+        }
+        button,
+        input,
+        select,
+        textarea {
+            background-color: transparent;
+            border-style: none;
+            color: inherit;
+            font-size: 1em;
+            margin: 0;
+        }
+        button,
+        input {
+            overflow: visible;
+        }
+        button,
+        select {
+            text-transform: none;
+        }
+        button,
+        html [type="button"],
+        [type="reset"],
+        [type="submit"] {
+            appearance: button;
+        }
+        ::-moz-focus-inner {
+            border-style: none;
+            padding: 0;
+        }
+        :-moz-focusring {
+            outline: 1px dotted ButtonText;
+        }
+        fieldset {
+            border: 1px solid #535353;
+            margin: 0 2px;
+            padding: 0.35em 0.625em 0.75em;
+        }
+        legend {
+            display: table;
+            max-width: 100%;
+            padding: 0;
+            white-space: normal;
+        }
+        textarea {
+            overflow: auto;
+            resize: vertical;
+        }
+        ::-webkit-input-placeholder {
+            color: #a6a6a6;
+            opacity: 0.54;
+        }
+        [aria-busy="true"] {
+            cursor: progress;
+        }
+        [aria-controls] {
+            cursor: pointer;
+        }
+        [aria-disabled] {
+            cursor: default;
+        }
+        a,
+        button,
+        input,
+        select,
+        textarea,
+        [tabindex] {
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+        }
+        button:hover,
+        button:focus,
+        input:hover,
+        input:focus {
+            outline: 0;
+            transition: 0.2s ease-in-out;
+        }
         .button {
-          padding: 15px 16px;
+            display: inline;
+            padding: 11px 12px;
+            width: auto;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            background: #f0f0f0;
+            border: 1px solid #009ec9;
+            color: #f0f0f0;
         }
-      }
-      .form__button:hover,
-      .form__button:focus {
-        background-color: #4dc9ff;
-        border: 1px solid #4dc9ff;
-        color: #000;
-        transition: 0.2s ease-in-out;
-      }
-      .button--full-width {
-        display: block;
-        width: 100%;
-      }
-      .form__input,
-      .form__button {
-        padding: 11px 16px;
-      }
-      @media screen and (min-width: 768px) {
+        ::-webkit-input-placeholder {
+            color: #a6a6a6;
+        }
+        :-moz-placeholder {
+            color: #a6a6a6;
+        }
+        ::-moz-placeholder {
+            color: #a6a6a6;
+        }
+        :-ms-input-placeholder {
+            color: #a6a6a6;
+        }
+        @media screen and (min-width: 768px) {
+            .button {
+                padding: 15px 16px;
+            }
+        }
+        .form__button:hover,
+        .form__button:focus {
+            background-color: #4dc9ff;
+            border: 1px solid #4dc9ff;
+            color: #000;
+            transition: 0.2s ease-in-out;
+        }
+        .button--full-width {
+            display: block;
+            width: 100%;
+        }
         .form__input,
         .form__button {
-          padding: 15px 16px;
+            padding: 11px 16px;
         }
-      }
-      .form__input {
-        appearance: none;
-        border-radius: 0;
-        border: 1px solid #535353;
-        background: #333;
-        color: #f0f0f0;
-        opacity: 0.7;
-      }
-      .form__button {
-        cursor: pointer;
-        background: #009ec9;
-        border: 1px solid #009ec9;
-        color: #000;
-      }
-      .form__input-and-button {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      @media screen and (min-width: 414px) {
+        @media screen and (min-width: 768px) {
+            .form__input,
+            .form__button {
+                padding: 15px 16px;
+            }
+        }
+        .form__input {
+            appearance: none;
+            border-radius: 0;
+            border: 1px solid #535353;
+            background: #333;
+            color: #f0f0f0;
+            opacity: 0.7;
+        }
+        .form__button {
+            cursor: pointer;
+            background: #009ec9;
+            border: 1px solid #009ec9;
+            color: #000;
+        }
         .form__input-and-button {
-          width: auto;
-          flex-wrap: nowrap;
+            display: flex;
+            flex-wrap: wrap;
         }
-      }
-      .form__input-and-button .form__input {
-        width: 100%;
-      }
-      .form__input-and-button .form__button {
-        width: 100%;
-        margin: -1px 0 0;
-      }
-      @media screen and (min-width: 414px) {
+        @media screen and (min-width: 414px) {
+            .form__input-and-button {
+                width: auto;
+                flex-wrap: nowrap;
+            }
+        }
+        .form__input-and-button .form__input {
+            width: 100%;
+        }
         .form__input-and-button .form__button {
-          width: auto;
-          margin: 0 0 0 -1px;
+            width: 100%;
+            margin: -1px 0 0;
         }
-      }
-      @media screen and (min-width: 768px) {
-        .form__input-and-button .form__button {
-          min-width: 160px;
+        @media screen and (min-width: 414px) {
+            .form__input-and-button .form__button {
+                width: auto;
+                margin: 0 0 0 -1px;
+            }
         }
-      }
-      /*Images and video*/
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-      video {
-        display: block;
-        object-fit: cover;
-        width: 100%;
-      }
-      /*Link + focus styling*/
-      a:link {
-        color: #0097d8;
-        text-decoration: none;
-      }
-      h2 a:link,
-      time ~ p a:link,
-      nav a:link {
-        color: #f0f0f0;
-      }
-      a:visited {
-        color: #0097d8;
-      }
-      h2 a:visited,
-      time ~ p a:visited,
-      nav a:visited {
-        color: #f0f0f0;
-      }
-      a:hover,
-      a:focus {
-        color: #00b2ff !important;
-        outline: none;
-        transition: 0.2s ease-in-out;
-      }
-      .logolink:focus .logobild,
-      .logolink:hover .logobild {
-        fill: #00b2ff;
-      }
+        @media screen and (min-width: 768px) {
+            .form__input-and-button .form__button {
+                min-width: 160px;
+            }
+        }
+        /*Images and video*/
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        video {
+            display: block;
+            object-fit: cover;
+            width: 100%;
+        }
+        /*Link + focus styling*/
+        a:link {
+            color: #0097d8;
+            text-decoration: none;
+        }
+        h2 a:link,
+        time ~ p a:link,
+        nav a:link {
+            color: #f0f0f0;
+        }
+        a:visited {
+            color: #0097d8;
+        }
+        h2 a:visited,
+        time ~ p a:visited,
+        nav a:visited {
+            color: #f0f0f0;
+        }
+        a:hover,
+        a:focus {
+            color: #00b2ff !important;
+            outline: none;
+            transition: 0.2s ease-in-out;
+        }
+        .logolink:focus .logobild,
+        .logolink:hover .logobild {
+            fill: #00b2ff;
+        }
 
-      /* Config Styles */
-      main {
-        width: 100%;
-      }
+        /* Config Styles */
+        main {
+            width: 100%;
+        }
 
-      article {
-        width: 100%;
-      }
+        article {
+            width: 100%;
+        }
 
-      button {
-        border: 2px;
-        border-color: white;
-        border-style: solid;
-      }
+        button {
+            border: 2px;
+            border-color: white;
+            border-style: solid;
+        }
 
-      table {
-       width: 100%; 
-      }
+        table {
+         width: 100%; 
+        }
 
-      tr {
-        width: 100%;
-      }
+        tr {
+            width: 100%;
+        }
 
-      td.left {
-        width: 20%
-      }
+        td.left {
+            width: 20%
+        }
 
-      td.center {
-        text-align: center;
-      }
+        td.center {
+            text-align: center;
+        }
 
-      td.right {
-        width: 80%;
-        text-align: right;
-      }
+        td.right {
+            width: 80%;
+            text-align: right;
+        }
 
-      select {
-        text-align-last: right;
-        outline: none;
-        background: black;
-      }
+        select {
+            text-align-last: right;
+            outline: none;
+            background: black;
+        }
 
-      option {
-      }
+        option {
+        }
 
-      input#deviceCPIRange {
-        vertical-align: middle;
-        width: 80%;
-        accent-color: white;
-      }
+        input#deviceCPIRange {
+            vertical-align: middle;
+            width: 80%;
+            accent-color: white;
+        }
 
-      input#deviceCPIText {
-        width:10%;
-        vertical-align: middle;
-        text-align: right;
-        color: white;
-        border: dashed;
-        border-color: white;
-        border-width: 1px;
-        background: transparent;
-      }
+        input#deviceCPIText {
+            width:10%;
+            vertical-align: middle;
+            text-align: right;
+            color: white;
+            border: dashed;
+            border-color: white;
+            border-width: 1px;
+            background: transparent;
+        }
 
-      div#appContainer {
-        position: relative;
-      }
+        div#appContainer {
+            position: relative;
+        }
 
-      div#modal {
-        background-color: rgb(0,0,0,0.75);
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        position: absolute;
-        z-index: 100;
-        justify-items: center;
-        align-content: center;
-        display:none;
-      }
+        div#modal {
+            background-color: rgb(0,0,0,0.75);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            z-index: 100;
+            justify-items: center;
+            align-content: center;
+            display:none;
+        }
 
-      div#modalDialogBox {
-        background-color: black;
-        width: auto;
-        height: auto;
-        align-items: center;
-        border: rgb(255,255,255,0.25);
-        border-style: solid;
-        border-width: 1px;
-      }
+        div#modalDialogBox {
+            background-color: black;
+            width: auto;
+            height: auto;
+            align-items: center;
+            border: rgb(255,255,255,0.25);
+            border-style: solid;
+            border-width: 1px;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <main>
-      <article>
-        <h1>Zaunkoenfigurator</h1>
-        <div id="appContainer">
-          <button id="connect" onclick=deviceConnect()>Connect</button>
-          <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
-          <div id="deviceContainer">
-            <table>
-              <tr>
-                <td class="left">
-                  Model
-                </td>
-                <td class="right">
-                  <div id="deviceModel"></div>
-                </td>
-              </tr>
-              <tr>
-                <td class="left">
-                  Firmware Version
-                </td>
-                <td class="right">
-                  <div id="deviceVersion"></div>
-                </td>
-              </tr>
-              <tr>
-                <td><br></td><td></td>
-              </tr>
-              <tr>
-                <td class="left">
-                  USB Speed
-                </td>
-                <td class="right">
-                  <select id="deviceUSBSpeed">
-                    <option value=1>High-Speed</option>
-                    <option value=0>Full-Speed</option>
-                  </select>
-                </td>
-              </tr>
-              <tr id=rowPollingRateFullSpeed style="display: none;">
-                <td class="left">
-                  Polling Rate
-                </td>
-                <td class="right">
-                  <select id="devicePollingRateFullSpeed">
-                    <option value=0>1000Hz</option>
-                  </select>
-                </td>
-              </tr>
-              <tr id=rowPollingRateHighSpeed>
-                <td class="left">
-                  Polling Rate
-                </td>
-                <td class="right">
-                  <select id="devicePollingRate">
-                    <option value=0>8000&thinsp;Hz</option>
-                    <option value=1>4000&thinsp;Hz</option>
-                    <option value=2>2000&thinsp;Hz</option>
-                    <option value=3>1000&thinsp;Hz</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="left">
-                  Lift Off Distance
-                </td>
-                <td class="right">
-                  <select id="deviceLiftOffDistance">
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="left">
-                  Angle Snapping
-                </td>
-                <td class="right">
-                  <select id="deviceAngleSnapping">
-                    <option value=0>Off</option>
-                    <option value=1>On</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="left">
-                  Primary Button
-                </td>
-                <td class="right">
-                  <select id="deviceSwapButtons">
-                    <option value=0>Left</option>
-                    <option value=1>Right</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td class="left">
-                  Sensitivity
-                </td>
-                <td class="right">
-                  <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
-                  <input id="deviceCPIText" type="text">
-                </td>
-              </tr>
-            </table>
-            <button id="apply" onclick=apply()>Apply</button>
-            <button id="factoryReset" onclick="modalOpen('factory reset')">Factory Reset</button>
-          </div>
-          <div id="modal">
-            <div id="modalDialogBox">
-              <table>
-                <tr>
-                  <td id="modalMessage" class="center" colspan="3">
-                    Are you sure you want to factory reset?
-                  </td>
-                </tr>
-                <tr>
-                  <td><br></td><td></td><td></td>
-                </tr>
-                <tr>
-                  <td style="text-align: left">
-                    <button id="modalConfirm">Confirm</button>
-                  </td>
-                  <td style="text-align: center">
-                    <button id="modalOk" onclick=modalClose()>Ok</button>
-                  </td>
-                  <td style="text-align: right">
-                    <button id="modalCancel" onclick=modalClose()>Cancel</button>
-                  </td>
-                </tr>
-              </table>
+        <article>
+            <h1>Zaunkoenfigurator</h1>
+            <div id="appContainer">
+                <button id="connect" onclick=deviceConnect()>Connect</button>
+                <button id="disconnect" onclick=deviceDisconnect()>Disconnect</button>
+                <div id="deviceContainer">
+                    <table>
+                        <tr>
+                            <td class="left">
+                                Model
+                            </td>
+                            <td class="right">
+                                <div id="deviceModel"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                Firmware Version
+                            </td>
+                            <td class="right">
+                                <div id="deviceVersion"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><br></td><td></td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                USB Speed
+                            </td>
+                            <td class="right">
+                                <select id="deviceUSBSpeed">
+                                    <option value=1>High-Speed</option>
+                                    <option value=0>Full-Speed</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id=rowPollingRateFullSpeed style="display: none;">
+                            <td class="left">
+                                Polling Rate
+                            </td>
+                            <td class="right">
+                                <select id="devicePollingRateFullSpeed">
+                                    <option value=0>1000Hz</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr id=rowPollingRateHighSpeed>
+                            <td class="left">
+                                Polling Rate
+                            </td>
+                            <td class="right">
+                                <select id="devicePollingRate">
+                                    <option value=0>8000&thinsp;Hz</option>
+                                    <option value=1>4000&thinsp;Hz</option>
+                                    <option value=2>2000&thinsp;Hz</option>
+                                    <option value=3>1000&thinsp;Hz</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                Lift Off Distance
+                            </td>
+                            <td class="right">
+                                <select id="deviceLiftOffDistance">
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                Angle Snapping
+                            </td>
+                            <td class="right">
+                                <select id="deviceAngleSnapping">
+                                    <option value=0>Off</option>
+                                    <option value=1>On</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                Primary Button
+                            </td>
+                            <td class="right">
+                                <select id="deviceSwapButtons">
+                                    <option value=0>Left</option>
+                                    <option value=1>Right</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">
+                                Sensitivity
+                            </td>
+                            <td class="right">
+                                <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
+                                <input id="deviceCPIText" type="text">
+                            </td>
+                        </tr>
+                    </table>
+                    <button id="apply" onclick=apply()>Apply</button>
+                    <button id="factoryReset" onclick="modalOpen('factory reset')">Factory Reset</button>
+                </div>
+                <div id="modal">
+                    <div id="modalDialogBox">
+                        <table>
+                            <tr>
+                                <td id="modalMessage" class="center" colspan="3">
+                                    Are you sure you want to factory reset?
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><br></td><td></td><td></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left">
+                                    <button id="modalConfirm">Confirm</button>
+                                </td>
+                                <td style="text-align: center">
+                                    <button id="modalOk" onclick=modalClose()>Ok</button>
+                                </td>
+                                <td style="text-align: right">
+                                    <button id="modalCancel" onclick=modalClose()>Cancel</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
-		  </div>
-        </div>
-      </article>
+        </article>
     </main>
 <script>
-  const supported_devices = [
-        {
-          vendorId:  0x0483, // STMicroelectronics
-          productId: 0xa462  // M3K
-        },
-        {
-          vendorId:  0x0483, // STMicroelectronics
-          productId: 0xa3cf  // M2K
+    const supported_devices = [
+                {
+                    vendorId:  0x0483, // STMicroelectronics
+                    productId: 0xa462  // M3K
+                },
+                {
+                    vendorId:  0x0483, // STMicroelectronics
+                    productId: 0xa3cf  // M2K
+                }
+    ];
+
+    let device = null;
+    let version = null;
+    let config = null;
+    let cpi_step = null;
+    let cpi_max = null;
+
+    updateDeviceContainerVisibility();
+
+    deviceAutoConnect();
+
+    function modalOpen(type, message, callback) {
+        switch(type) {
+            case "info":
+                document.getElementById('modalMessage').innerText = 'You have been swenched';
+                document.getElementById('modalConfirm').style.visibility = 'hidden';
+                document.getElementById('modalOk').style.visibility = 'visible';
+                document.getElementById('modalCancel').style.visibility = 'hidden';
+            break;
+
+            case "unsupported version":
+                document.getElementById('modalMessage').innerText = 'Unsupported firmware version. parawizard new v0.8 or higher required';
+                document.getElementById('modalConfirm').style.visibility = 'hidden';
+                document.getElementById('modalOk').style.visibility = 'visible';
+                document.getElementById('modalCancel').style.visibility = 'hidden';
+            break;
+
+            case "factory reset":
+                document.getElementById('modalMessage').innerText = 'Are you sure you want to factory reset?';
+                document.getElementById('modalConfirm').style.visibility = 'visible';
+                document.getElementById('modalOk').style.visibility = 'hidden';
+                document.getElementById('modalCancel').style.visibility = 'visible';
+                document.getElementById('modalConfirm').onclick = factoryReset;
+            break;
         }
-  ];
 
-  let device = null;
-  let version = null;
-  let config = null;
-  let cpi_step = null;
-  let cpi_max = null;
-
-  updateDeviceContainerVisibility();
-
-  deviceAutoConnect();
-
-  function modalOpen(type, message, callback) {
-    switch(type) {
-      case "info":
-        document.getElementById('modalMessage').innerText = 'You have been swenched';
-        document.getElementById('modalConfirm').style.visibility = 'hidden';
-        document.getElementById('modalOk').style.visibility = 'visible';
-        document.getElementById('modalCancel').style.visibility = 'hidden';
-      break;
-
-      case "unsupported version":
-        document.getElementById('modalMessage').innerText = 'Unsupported firmware version. parawizard new v0.8 or higher required';
-        document.getElementById('modalConfirm').style.visibility = 'hidden';
-        document.getElementById('modalOk').style.visibility = 'visible';
-        document.getElementById('modalCancel').style.visibility = 'hidden';
-      break;
-
-      case "factory reset":
-        document.getElementById('modalMessage').innerText = 'Are you sure you want to factory reset?';
-        document.getElementById('modalConfirm').style.visibility = 'visible';
-        document.getElementById('modalOk').style.visibility = 'hidden';
-        document.getElementById('modalCancel').style.visibility = 'visible';
-        document.getElementById('modalConfirm').onclick = factoryReset;
-      break;
+        document.getElementById('modal').style.display = 'inline';
     }
 
-    document.getElementById('modal').style.display = 'inline';
-  }
-
-  function modalClose() {
-    document.getElementById('modal').style.display = 'none';
-  }
-
-  // Function to update connectButton, disconnectButton and deviceContainer visibility
-  function updateDeviceContainerVisibility() {
-    const deviceContainer = document.getElementById('deviceContainer');
-    deviceContainer.style.visibility = device === null ? 'hidden' : 'visible';
-    const connectButton = document.getElementById('connect');
-    connectButton.style.display = device === null ? 'inline-block' : 'none';
-    const disconnectButton = document.getElementById('disconnect');
-    disconnectButton.style.display = device === null ? 'none' : 'inline-block';
-  }
-
-  // Listen for device plug
-  navigator.hid.addEventListener('connect', (event) => {
-    console.log('Device connected:', event.device.productName);
-  });
-
-  // Listen for device unplug to hide config table
-  navigator.hid.addEventListener('disconnect', (event) => {
-    console.log('Device disconnected:', event.device.productName);
-
-    if (event.device === device) {
-      deviceDisconnect();
-    }
-  });
-
-  document.getElementById('deviceUSBSpeed').addEventListener('input', function() {
-    rowPollingRateHighSpeed.style.display = this.value == 0 ? 'none' : 'table-row';
-    rowPollingRateFullSpeed.style.display = this.value == 1 ? 'none' : 'table-row';
-    config.usbSpeed = Number(this.value);
-  });
-
-  document.getElementById('devicePollingRate').addEventListener('input', function() {
-    config.pollingRate = Number(this.value);
-  });
-
-  document.getElementById('deviceLiftOffDistance').addEventListener('input', function() {
-    config.liftOffDistance = Number(this.value);
-  });
-
-  document.getElementById('deviceAngleSnapping').addEventListener('input', function() {
-    config.angleSnapping = Number(this.value);
-  });
-
-  document.getElementById('deviceSwapButtons').addEventListener('input', function() {
-    config.swapButtons = Number(this.value);
-  });
-
-  // Update CPI text input field when slider changes
-  document.getElementById('deviceCPIRange').addEventListener('input', function() {
-    document.getElementById('deviceCPIText').value = this.value;
-    config.cpi = Number(this.value) / cpi_step - 1;
-  });
-
-  // Check bounds, round to nearest cpi_step and update CPI slider when text input field changes
-  document.getElementById('deviceCPIText').addEventListener('change', function() {
-    // Make sure cpi_step is minimum
-    if (isNaN(this.value) || this.value < cpi_step) this.value = cpi_step;
-    // Make sure cpi_max is maximum
-    if (this.value > cpi_max) this.value = cpi_max;
-    // Round to nearest cpi_step
-    this.value = Math.round(this.value / cpi_step) * cpi_step;
-      document.getElementById('deviceCPIRange').value = this.value;
-      config.cpi = Number(this.value) / cpi_step - 1;
-  });
-
-  async function apply() {
-    deviceWriteConfig();
-  }
-
-  async function factoryReset() {
-    deviceFactoryReset();
-    modalClose();
-  }
-
-  async function deviceAutoConnect() {
-    try {
-        const devices = await navigator.hid.getDevices({filters: supported_devices});
-      device = devices[0];
-      if (!device) return;
-      deviceOpen();
-    } catch {
-      console.log("eh");
-    }
-  }
-
-  async function deviceConnect() {
-    try {
-      const devices = await navigator.hid.requestDevice({filters: supported_devices});
-      device = devices[0];
-      if (!device) return;
-      await deviceOpen();
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  async function deviceOpen() {
-    try {
-      if (!device.collections.some(col => col.usagePage === 65280 )) {
-        console.log("Device firmware too old. parawizard new v0.8.0 or newer is required");
-        alert("Device firmware too old. parawizard new v0.8.0 or newer is required");
-        return;
-      }
-
-      await device.open();
-      console.log("Device opened:", device.productName);
-
-      version = await deviceReadVersion();
-
-      if (version.indexOf("parawizard new v0.8") == -1) {
-        modalOpen("unsupported version");
-        deviceDisconnect();
-        return;
-      }
-
-      config = await deviceReadConfig();
-      if (device.productId == 0xa3cf) {
-          cpi_step = 100;
-          cpi_max = 12000;
-      } else {
-          cpi_step = 50;
-          cpi_max = 20000;
-      }
-
-      updateDeviceContainerData();
-      updateDeviceContainerVisibility();
-    } catch {
-      console.log("Error opening device");
-    }
-  }
-
-  async function deviceDisconnect() {
-    try {
-      device.close();
-      console.log("Device closed:", device.productName);
-      device = null;
-      config = null;
-      version = null;
-      updateDeviceContainerVisibility();
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  async function updateDeviceContainerData() {
-    document.getElementById('deviceModel').innerText = device.productName;
-    document.getElementById('deviceVersion').innerText = version;
-    document.getElementById('deviceUSBSpeed').value = config.usbSpeed;
-    document.getElementById('devicePollingRate').value = config.pollingRate;
-    // Setting deviceUSBSpeed doesn't dispatch the input event so we fire manually
-    let deviceUSBSpeed = document.getElementById('deviceUSBSpeed');
-    deviceUSBSpeed.value = config.usbSpeed;
-    deviceUSBSpeed.dispatchEvent(new Event('input', {bubbles: true}));
-    let deviceLODSelect = document.getElementById('deviceLiftOffDistance');
-    deviceLODSelect.innerHTML = '';
-
-    let lods = null;
-
-    if (device.productId == 0xa3cf) {
-        lods = [{value: 2, text: "2 mm"}, {value: 3, text: "3 mm"}];
-    } else {
-        lods = [{value: 0, text: "1 mm"},{value: 1, text: "2 mm"}, {value: 2, text: "3 mm"}];
+    function modalClose() {
+        document.getElementById('modal').style.display = 'none';
     }
 
-    for (const lod of lods) {
-        const option = document.createElement("option");
-        option.value = lod.value;
-        option.textContent = lod.text;
-        deviceLODSelect.appendChild(option);
+    // Function to update connectButton, disconnectButton and deviceContainer visibility
+    function updateDeviceContainerVisibility() {
+        const deviceContainer = document.getElementById('deviceContainer');
+        deviceContainer.style.visibility = device === null ? 'hidden' : 'visible';
+        const connectButton = document.getElementById('connect');
+        connectButton.style.display = device === null ? 'inline-block' : 'none';
+        const disconnectButton = document.getElementById('disconnect');
+        disconnectButton.style.display = device === null ? 'none' : 'inline-block';
     }
 
-    deviceLODSelect.value = config.liftOffDistance;
-    document.getElementById('deviceAngleSnapping').value = config.angleSnapping;
-    document.getElementById('deviceSwapButtons').value = config.swapButtons;
-    let deviceCPIRange = document.getElementById('deviceCPIRange');
-    deviceCPIRange.value = (config.cpi + 1) * cpi_step;
-    deviceCPIRange.min = cpi_step;
-    deviceCPIRange.max = cpi_max;
-    deviceCPIRange.step = cpi_step;
-    document.getElementById('deviceCPIText').value = (config.cpi + 1) * cpi_step;
-  }
+    // Listen for device plug
+    navigator.hid.addEventListener('connect', (event) => {
+        console.log('Device connected:', event.device.productName);
+    });
 
-  async function deviceReadVersion() {
-    try {
-      const reportId = 2;
-      const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
+    // Listen for device unplug to hide config table
+    navigator.hid.addEventListener('disconnect', (event) => {
+        console.log('Device disconnected:', event.device.productName);
 
-      let ascii = '';
-      // Start at 1 to drop report id first byte
-      for (let i = 1; i < reportIdPlusDataDataview.byteLength; i++) {
-        ascii += String.fromCharCode(reportIdPlusDataDataview.getUint8(i));
-      }
+        if (event.device === device) {
+            deviceDisconnect();
+        }
+    });
 
-      // Cut extra whitespace off after C null terminator
-      ascii = ascii.split('\0')[0];
+    document.getElementById('deviceUSBSpeed').addEventListener('input', function() {
+        rowPollingRateHighSpeed.style.display = this.value == 0 ? 'none' : 'table-row';
+        rowPollingRateFullSpeed.style.display = this.value == 1 ? 'none' : 'table-row';
+        config.usbSpeed = Number(this.value);
+    });
 
-      console.log("Firmware version:", ascii);
+    document.getElementById('devicePollingRate').addEventListener('input', function() {
+        config.pollingRate = Number(this.value);
+    });
 
-      return ascii;
+    document.getElementById('deviceLiftOffDistance').addEventListener('input', function() {
+        config.liftOffDistance = Number(this.value);
+    });
 
-    } catch (error) {
-      console.error("Error:", error);
+    document.getElementById('deviceAngleSnapping').addEventListener('input', function() {
+        config.angleSnapping = Number(this.value);
+    });
+
+    document.getElementById('deviceSwapButtons').addEventListener('input', function() {
+        config.swapButtons = Number(this.value);
+    });
+
+    // Update CPI text input field when slider changes
+    document.getElementById('deviceCPIRange').addEventListener('input', function() {
+        document.getElementById('deviceCPIText').value = this.value;
+        config.cpi = Number(this.value) / cpi_step - 1;
+    });
+
+    // Check bounds, round to nearest cpi_step and update CPI slider when text input field changes
+    document.getElementById('deviceCPIText').addEventListener('change', function() {
+        // Make sure cpi_step is minimum
+        if (isNaN(this.value) || this.value < cpi_step) this.value = cpi_step;
+        // Make sure cpi_max is maximum
+        if (this.value > cpi_max) this.value = cpi_max;
+        // Round to nearest cpi_step
+        this.value = Math.round(this.value / cpi_step) * cpi_step;
+            document.getElementById('deviceCPIRange').value = this.value;
+            config.cpi = Number(this.value) / cpi_step - 1;
+    });
+
+    async function apply() {
+        deviceConfigWrite();
     }
-  }
 
-  async function deviceReadConfig() {
-    try {
-      // Read 2 byte feature report (Report ID 2)
-      const reportId = 3;
-      const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
-      const dataBuffer = reportIdPlusDataDataview.buffer.slice(1);
-      const data = new Uint16Array(dataBuffer);
-
-      // Return the 16-bit config
-      readConfig = await deviceParseConfig(data[0]);
-      // Space after read: is to align it with Config write log line
-      console.log("Config read: ", JSON.stringify(readConfig));
-
-      // Log raw bytes and their length
-      const rawBytes = new Uint8Array(dataBuffer);
-      console.log("Config bytes:", Array.from(rawBytes).map(b => b.toString(16).padStart(2, '0')).join(' '));
-      console.log("Config length:", rawBytes.length);
-
-      return readConfig;
-    } catch (error) {
-      console.error("Error:", error);
+    async function factoryReset() {
+        deviceFactoryReset();
+        modalClose();
     }
-  }
 
-  async function deviceWriteConfig() {
-    try {
-      const reportId = 3;
+    async function deviceAutoConnect() {
+        try {
+                const devices = await navigator.hid.getDevices({filters: supported_devices});
+            device = devices[0];
+            if (!device) return;
+            deviceOpen();
+        } catch {
+            console.log("eh");
+        }
+    }
 
-      const newConfig = new Uint16Array(2);
-      newConfig[0] = deviceBuildConfig(config);
-      newConfig[1] = 0; 
+    async function deviceConnect() {
+        try {
+            const devices = await navigator.hid.requestDevice({filters: supported_devices});
+            device = devices[0];
+            if (!device) return;
+            await deviceOpen();
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
 
-      currentConfig = await deviceReadConfig();
+    async function deviceOpen() {
+        try {
+            if (!device.collections.some(col => col.usagePage === 65280 )) {
+                console.log("Device firmware too old. parawizard new v0.8.0 or newer is required");
+                alert("Device firmware too old. parawizard new v0.8.0 or newer is required");
+                return;
+            }
 
-      if (deviceBuildConfig(currentConfig) != newConfig[0]) {
+            await device.open();
+            console.log("Device opened:", device.productName);
 
-        await device.sendFeatureReport(reportId, newConfig);
-        console.log("Config write:", JSON.stringify(config));
+            version = await deviceReadVersion();
 
-        const updatedConfig = await deviceReadConfig();
+            if (version.indexOf("parawizard new v0.8") == -1) {
+                modalOpen("unsupported version");
+                deviceDisconnect();
+                return;
+            }
 
-      if (deviceBuildConfig(updatedConfig) == newConfig[0]) {
-          console.log("Config write: Success");
-          config = updatedConfig;
+            config = await deviceConfigRead();
+            if (device.productId == 0xa3cf) {
+                    cpi_step = 100;
+                    cpi_max = 12000;
+            } else {
+                    cpi_step = 50;
+                    cpi_max = 20000;
+            }
+
+            updateDeviceContainerData();
+            updateDeviceContainerVisibility();
+        } catch {
+            console.log("Error opening device");
+        }
+    }
+
+    async function deviceDisconnect() {
+        try {
+            device.close();
+            console.log("Device closed:", device.productName);
+            device = null;
+            config = null;
+            version = null;
+            updateDeviceContainerVisibility();
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    async function updateDeviceContainerData() {
+        document.getElementById('deviceModel').innerText = device.productName;
+        document.getElementById('deviceVersion').innerText = version;
+        document.getElementById('deviceUSBSpeed').value = config.usbSpeed;
+        document.getElementById('devicePollingRate').value = config.pollingRate;
+        // Setting deviceUSBSpeed doesn't dispatch the input event so we fire manually
+        let deviceUSBSpeed = document.getElementById('deviceUSBSpeed');
+        deviceUSBSpeed.value = config.usbSpeed;
+        deviceUSBSpeed.dispatchEvent(new Event('input', {bubbles: true}));
+        let deviceLODSelect = document.getElementById('deviceLiftOffDistance');
+        deviceLODSelect.innerHTML = '';
+
+        let lods = null;
+
+        if (device.productId == 0xa3cf) {
+                lods = [{value: 2, text: "2 mm"}, {value: 3, text: "3 mm"}];
         } else {
-          alert("Config write: Fail");
+                lods = [{value: 0, text: "1 mm"},{value: 1, text: "2 mm"}, {value: 2, text: "3 mm"}];
         }
-      } else {
-        console.log("Config write: Skipped no change");
-      }
 
-      updateDeviceContainerData();
+        for (const lod of lods) {
+                const option = document.createElement("option");
+                option.value = lod.value;
+                option.textContent = lod.text;
+                deviceLODSelect.appendChild(option);
+        }
 
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  function createPRBS7(seed = 0x7f) {
-  if (seed === 0 || seed > 0x7f) {
-  throw new Error("Seed must be 1..0x7f for PRBS7");
-  }
-
-  let state = seed & 0x7f;
-
-  return {
-  nextBit() {
-    const newBit = ((state >> 6) ^ (state >> 5)) & 1;
-    const outBit = state & 1;
-    state = ((state << 1) | newBit) & 0x7f;
-    return outBit;
-  },
-  getState() {
-    return state;
-  },
-  setState(newState) {
-    if (newState === 0 || newState > 0x7f) {
-      throw new Error("State must be 1..0x7f for PRBS7");
-    }
-    state = newState & 0x7f;
-  }
-  };
-  }
-
-  function fill63ByteArrayPRBS7(prbs) {
-  const buf = new Uint8Array(63);
-
-  for (let i = 0; i < buf.length; i++) {
-  let byte = 0;
-  for (let b = 0; b < 8; b++) {
-    byte |= prbs.nextBit() << b;
-  }
-  buf[i] = byte;
-  }
-
-  return buf;
-  }
-
-  async function deviceBERTWrite() {
-    try {
-      const reportId = 2;
-      const prbs = createPRBS7(0x7f);
-      const bertData = fill63ByteArrayPRBS7(prbs);
-
-      while(1) {
-        await device.sendFeatureReport(reportId, bertData);
-        //console.log("BERT write:", JSON.stringify(bertData));
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  async function deviceFactoryReset() {
-    try {
-      const reportId = 3;
-
-      const newConfig = new Uint16Array(2);
-      newConfig[0] = 0;
-      newConfig[1] = 0xFFFF;
-
-      currentConfig = await deviceReadConfig();
-
-      await device.sendFeatureReport(reportId, newConfig);
-      console.log("Factory reset: Success");
-      config = await deviceReadConfig();
-      updateDeviceContainerData();
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  function deviceBuildConfig({swapButtons, angleSnapping, usbSpeed, pollingRate, liftOffDistance, cpi }) {
-    if (swapButtons != 0 && swapButtons != 1) throw new Error('swapButtons must be 0 or 1');
-    if (angleSnapping != 0 && angleSnapping != 1) throw new Error('angleSnapping must be 0 or 1');
-    if (usbSpeed != 0 && usbSpeed != 1) throw new Error('usbSpeed must be 0 or 1');
-    if (!Number.isInteger(pollingRate) || pollingRate < 0 || pollingRate > 3) throw new Error('pollingRate must be an integer between 0 and 3');
-    if (device.productId == 0xa3cf) {
-        if (!Number.isInteger(liftOffDistance) || liftOffDistance < 2 || liftOffDistance > 3) throw new Error('liftOffDistance must be either 2 or 3');
-        if (!Number.isInteger(cpi) || cpi < 0 || cpi > 119) throw new Error('cpi must be an integer between 0 and 119');
-    } else {
-        if (!Number.isInteger(liftOffDistance) || liftOffDistance < 0 || liftOffDistance > 3) throw new Error('liftOffDistance must be an integer between 0 and 3');
-        if (!Number.isInteger(cpi) || cpi < 0 || cpi > 399) throw new Error('cpi must be an integer between 0 and 399');
+        deviceLODSelect.value = config.liftOffDistance;
+        document.getElementById('deviceAngleSnapping').value = config.angleSnapping;
+        document.getElementById('deviceSwapButtons').value = config.swapButtons;
+        let deviceCPIRange = document.getElementById('deviceCPIRange');
+        deviceCPIRange.value = (config.cpi + 1) * cpi_step;
+        deviceCPIRange.min = cpi_step;
+        deviceCPIRange.max = cpi_max;
+        deviceCPIRange.step = cpi_step;
+        document.getElementById('deviceCPIText').value = (config.cpi + 1) * cpi_step;
     }
 
-    const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
-    const CONFIG_ANGLE_SNAP_ON = 1 << 14;
-    const CONFIG_HS_USB = 1 << 13;
-    const CONFIG_INTERVAL_Pos = 11;
-    const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos;
-    const CONFIG_LOD_Pos = 9;
-    const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;
-    const CONFIG_DPI_Pos = 0;
-    const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;
+    async function deviceReadVersion() {
+        try {
+            const reportId = 2;
+            const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
 
-    let config = 0;
+            let ascii = '';
+            // Start at 1 to drop report id first byte
+            for (let i = 1; i < reportIdPlusDataDataview.byteLength; i++) {
+                ascii += String.fromCharCode(reportIdPlusDataDataview.getUint8(i));
+            }
 
-    if (usbSpeed == 1) config |= CONFIG_HS_USB;
-    config |= (pollingRate << CONFIG_INTERVAL_Pos) & CONFIG_INTERVAL_Msk;
-    config |= (liftOffDistance << CONFIG_LOD_Pos) & CONFIG_LOD_Msk;
-    if (angleSnapping == 1) config |= CONFIG_ANGLE_SNAP_ON;
-    if (swapButtons == 1) config |= CONFIG_SWAP_LMB_AND_RMB;
-    config |= (cpi << CONFIG_DPI_Pos) & CONFIG_DPI_Msk;
+            // Cut extra whitespace off after C null terminator
+            ascii = ascii.split('\0')[0];
 
-    // Ensure the result is a 16-bit unsigned integer
-    return config & 0xFFFF;
-  }
+            console.log("Firmware version:", ascii);
 
-  function deviceParseConfig(config) {
-      // Ensure the input is a 16-bit unsigned integer
-      config = config & 0xFFFF;
+            return ascii;
 
-      const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
-      const CONFIG_ANGLE_SNAP_ON = 1 << 14;                    // 0x4000
-      const CONFIG_HS_USB = 1 << 13;                           // 0x2000
-      const CONFIG_INTERVAL_Pos = 11;
-      const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos; // 0x1800
-      const CONFIG_LOD_Pos = 9;
-      const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;           // 0x0600
-      const CONFIG_DPI_Pos = 0;
-      const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;          // 0x01FF
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
 
-      const swapButtons = (config & CONFIG_SWAP_LMB_AND_RMB) ? 1 : 0;            // 1 bit: Off = 0, On = 1
-      const angleSnapping = (config & CONFIG_ANGLE_SNAP_ON) ? 1 : 0;             // 1 bit: Off = 0, On = 1
-      const usbSpeed = (config & CONFIG_HS_USB) ? 1 : 0;                         // 1 bit: FS = 0, HS = 1
-      const pollingRate = (config & CONFIG_INTERVAL_Msk) >> CONFIG_INTERVAL_Pos; // 2 bits: 0 to 3
-      const liftOffDistance = (config & CONFIG_LOD_Msk) >> CONFIG_LOD_Pos;       // 2 bits: 0 to 2
-      const cpi = (config & CONFIG_DPI_Msk) >> CONFIG_DPI_Pos;                   // 9 bits: 0 to 399
+    async function deviceConfigRead() {
+        try {
+            // Read 2 byte feature report (Report ID 2)
+            const reportId = 3;
+            const reportIdPlusDataDataview = await device.receiveFeatureReport(reportId);
+            const dataBuffer = reportIdPlusDataDataview.buffer.slice(1);
+            const data = new Uint16Array(dataBuffer);
 
-      return {
-        usbSpeed,
-        pollingRate,
-        liftOffDistance,
-        angleSnapping,
-        swapButtons,
-        cpi
-      };
-  }
+            // Return the 16-bit config
+            readConfig = await deviceConfigParse(data[0]);
+            // Space after read: is to align it with Config write log line
+            console.log("Config read: ", JSON.stringify(readConfig));
+
+            // Log raw bytes and their length
+            const rawBytes = new Uint8Array(dataBuffer);
+            console.log("Config bytes:", Array.from(rawBytes).map(b => b.toString(16).padStart(2, '0')).join(' '));
+            console.log("Config length:", rawBytes.length);
+
+            return readConfig;
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    async function deviceConfigWrite() {
+        try {
+            const reportId = 3;
+
+            const newConfig = new Uint16Array(2);
+            newConfig[0] = deviceConfigBuild(config);
+            newConfig[1] = 0; 
+
+            currentConfig = await deviceConfigRead();
+
+            if (deviceConfigBuild(currentConfig) != newConfig[0]) {
+
+                await device.sendFeatureReport(reportId, newConfig);
+                console.log("Config write:", JSON.stringify(config));
+
+                const updatedConfig = await deviceConfigRead();
+
+            if (deviceConfigBuild(updatedConfig) == newConfig[0]) {
+                    console.log("Config write: Success");
+                    config = updatedConfig;
+                } else {
+                    alert("Config write: Fail");
+                }
+            } else {
+                console.log("Config write: Skipped no change");
+            }
+
+            updateDeviceContainerData();
+
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    function createPRBS7(seed = 0x7f) {
+        if (seed === 0 || seed > 0x7f) {
+            throw new Error("Seed must be 1..0x7f for PRBS7");
+        }
+
+        let state = seed & 0x7f;
+
+        return {
+            nextBit() {
+                const newBit = ((state >> 6) ^ (state >> 5)) & 1;
+                const outBit = state & 1;
+                state = ((state << 1) | newBit) & 0x7f;
+                return outBit;
+            },
+            getState() {
+                return state;
+            },
+            setState(newState) {
+                if (newState === 0 || newState > 0x7f) {
+                    throw new Error("State must be 1..0x7f for PRBS7");
+                }
+
+                state = newState & 0x7f;
+            }
+        };
+    }
+
+    function fill63ByteArrayPRBS7(prbs) {
+        const buf = new Uint8Array(63);
+
+        for (let i = 0; i < buf.length; i++) {
+            let byte = 0;
+
+            for (let b = 0; b < 8; b++) {
+                byte |= prbs.nextBit() << b;
+            }
+
+            buf[i] = byte;
+        }
+
+        return buf;
+    }
+
+    async function deviceBERTWrite() {
+        try {
+            const reportId = 2;
+            const prbs = createPRBS7(0x7f);
+            const bertData = fill63ByteArrayPRBS7(prbs);
+
+            while(1) {
+                await device.sendFeatureReport(reportId, bertData);
+                //console.log("BERT write:", JSON.stringify(bertData));
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    async function deviceFactoryReset() {
+        try {
+            const reportId = 3;
+
+            const newConfig = new Uint16Array(2);
+            newConfig[0] = 0;
+            newConfig[1] = 0xFFFF;
+
+            currentConfig = await deviceConfigRead();
+
+            await device.sendFeatureReport(reportId, newConfig);
+            console.log("Factory reset: Success");
+            config = await deviceConfigRead();
+            updateDeviceContainerData();
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    function deviceConfigBuild({swapButtons, angleSnapping, usbSpeed, pollingRate, liftOffDistance, cpi }) {
+        if (swapButtons != 0 && swapButtons != 1) throw new Error('swapButtons must be 0 or 1');
+        if (angleSnapping != 0 && angleSnapping != 1) throw new Error('angleSnapping must be 0 or 1');
+        if (usbSpeed != 0 && usbSpeed != 1) throw new Error('usbSpeed must be 0 or 1');
+        if (!Number.isInteger(pollingRate) || pollingRate < 0 || pollingRate > 3) throw new Error('pollingRate must be an integer between 0 and 3');
+        if (device.productId == 0xa3cf) {
+            if (!Number.isInteger(liftOffDistance) || liftOffDistance < 2 || liftOffDistance > 3) throw new Error('liftOffDistance must be either 2 or 3');
+            if (!Number.isInteger(cpi) || cpi < 0 || cpi > 119) throw new Error('cpi must be an integer between 0 and 119');
+        } else {
+            if (!Number.isInteger(liftOffDistance) || liftOffDistance < 0 || liftOffDistance > 3) throw new Error('liftOffDistance must be an integer between 0 and 3');
+            if (!Number.isInteger(cpi) || cpi < 0 || cpi > 399) throw new Error('cpi must be an integer between 0 and 399');
+        }
+
+        const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
+        const CONFIG_ANGLE_SNAP_ON = 1 << 14;
+        const CONFIG_HS_USB = 1 << 13;
+        const CONFIG_INTERVAL_Pos = 11;
+        const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos;
+        const CONFIG_LOD_Pos = 9;
+        const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;
+        const CONFIG_DPI_Pos = 0;
+        const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;
+
+        let config = 0;
+
+        if (usbSpeed == 1) config |= CONFIG_HS_USB;
+        config |= (pollingRate << CONFIG_INTERVAL_Pos) & CONFIG_INTERVAL_Msk;
+        config |= (liftOffDistance << CONFIG_LOD_Pos) & CONFIG_LOD_Msk;
+        if (angleSnapping == 1) config |= CONFIG_ANGLE_SNAP_ON;
+        if (swapButtons == 1) config |= CONFIG_SWAP_LMB_AND_RMB;
+        config |= (cpi << CONFIG_DPI_Pos) & CONFIG_DPI_Msk;
+
+        // Ensure the result is a 16-bit unsigned integer
+        return config & 0xFFFF;
+    }
+
+    function deviceConfigParse(config) {
+        // Ensure the input is a 16-bit unsigned integer
+        config = config & 0xFFFF;
+
+        const CONFIG_SWAP_LMB_AND_RMB = 1 << 15;
+        const CONFIG_ANGLE_SNAP_ON = 1 << 14;                    // 0x4000
+        const CONFIG_HS_USB = 1 << 13;                           // 0x2000
+        const CONFIG_INTERVAL_Pos = 11;
+        const CONFIG_INTERVAL_Msk = 0b11 << CONFIG_INTERVAL_Pos; // 0x1800
+        const CONFIG_LOD_Pos = 9;
+        const CONFIG_LOD_Msk = 0b11 << CONFIG_LOD_Pos;           // 0x0600
+        const CONFIG_DPI_Pos = 0;
+        const CONFIG_DPI_Msk = 0x1FF << CONFIG_DPI_Pos;          // 0x01FF
+
+        const swapButtons = (config & CONFIG_SWAP_LMB_AND_RMB) ? 1 : 0;            // 1 bit: Off = 0, On = 1
+        const angleSnapping = (config & CONFIG_ANGLE_SNAP_ON) ? 1 : 0;             // 1 bit: Off = 0, On = 1
+        const usbSpeed = (config & CONFIG_HS_USB) ? 1 : 0;                         // 1 bit: FS = 0, HS = 1
+        const pollingRate = (config & CONFIG_INTERVAL_Msk) >> CONFIG_INTERVAL_Pos; // 2 bits: 0 to 3
+        const liftOffDistance = (config & CONFIG_LOD_Msk) >> CONFIG_LOD_Pos;       // 2 bits: 0 to 2
+        const cpi = (config & CONFIG_DPI_Msk) >> CONFIG_DPI_Pos;                   // 9 bits: 0 to 399
+
+        return {
+            usbSpeed,
+            pollingRate,
+            liftOffDistance,
+            angleSnapping,
+            swapButtons,
+            cpi
+        };
+    }
 </script>
-    <footer>
-      <nav>
-        <a href="https://zaunkoenig.co/about">About</a>
-        <span> | </span>
-        <a href="https://zaunkoenig.co/blog">Blog</a>
-        <span> | </span>
-        <a href="https://zaunkoenig.co/contact">Contact</a>
-        <span> | </span>
-        <a href="https://zaunkoenig.co/m3k">M3K</a>
-        <span> | </span>
-        <a href="https://zaunkoenig.co/support">Support</a>
-        <a title="Zaunkoenig Home" class="logolink" href="https://zaunkoenig.co/">
-          <svg class="logobild" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4082 5000">
-            <path d="M4081.9897 47.704s-.4297 2.922-295.516-14.422C2267.963-56 813.1-71.218 532.5703 2185.117L225.5323.5H.5c88.0023 707.557 348.606 2762.422 500.365 3530.7097 24.74 125.2 82.3304 338.0774 214.48 472.3726l-285.633 996.1423h227.9505L911.0952 4115.94l8.2238 2.002c314.7365 64.8 881.3855 124.973 1432.1364-15.957l399.6997 897.7402h238.0383l-428.3284-962.0244c75.996-27.4 151.068-58.9778 224.375-95.818 711.0457-357.37 891.8718-969.3562 848.7297-2140.7898-40.1877-1091.788 115.2505-1446.0132 448.02-1753.38zM2713.86 986.262c-106.93 0-193.6267-86.71-193.6267-193.627 0-106.94 86.6968-193.627 193.6267-193.627s193.6382 86.688 193.6382 193.627c0 106.918-86.6997 193.627-193.6382 193.627z"></path>
-          </svg>
-        </a>
-      </nav>
-    </footer>
-</body></html>
+        <footer>
+            <nav>
+                <a href="https://zaunkoenig.co/about">About</a>
+                <span> | </span>
+                <a href="https://zaunkoenig.co/blog">Blog</a>
+                <span> | </span>
+                <a href="https://zaunkoenig.co/contact">Contact</a>
+                <span> | </span>
+                <a href="https://zaunkoenig.co/m3k">M3K</a>
+                <span> | </span>
+                <a href="https://zaunkoenig.co/support">Support</a>
+                <a title="Zaunkoenig Home" class="logolink" href="https://zaunkoenig.co/">
+                    <svg class="logobild" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4082 5000">
+                        <path d="M4081.9897 47.704s-.4297 2.922-295.516-14.422C2267.963-56 813.1-71.218 532.5703 2185.117L225.5323.5H.5c88.0023 707.557 348.606 2762.422 500.365 3530.7097 24.74 125.2 82.3304 338.0774 214.48 472.3726l-285.633 996.1423h227.9505L911.0952 4115.94l8.2238 2.002c314.7365 64.8 881.3855 124.973 1432.1364-15.957l399.6997 897.7402h238.0383l-428.3284-962.0244c75.996-27.4 151.068-58.9778 224.375-95.818 711.0457-357.37 891.8718-969.3562 848.7297-2140.7898-40.1877-1091.788 115.2505-1446.0132 448.02-1753.38zM2713.86 986.262c-106.93 0-193.6267-86.71-193.6267-193.627 0-106.94 86.6968-193.627 193.6267-193.627s193.6382 86.688 193.6382 193.627c0 106.918-86.6997 193.627-193.6382 193.627z"></path>
+                    </svg>
+                </a>
+            </nav>
+        </footer>
+    </body>
+</html>
