@@ -618,13 +618,42 @@
         option {
         }
 
+        /* Get rid of up and down increment buttons in number fields */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        input[type="number"] {
+          -moz-appearance: textfield;
+          appearance: textfield;
+        }
+
+        input#deviceAngleTuningRange {
+            vertical-align: middle;
+            width: 40%;
+            accent-color: white;
+        }
+
+        input#deviceAngleTuningNumber {
+            width:5%;
+            vertical-align: middle;
+            text-align: right;
+            color: white;
+            border: dashed;
+            border-color: white;
+            border-width: 1px;
+            background: transparent;
+        }
+
         input#deviceCPIRange {
             vertical-align: middle;
             width: 80%;
             accent-color: white;
         }
 
-        input#deviceCPIText {
+        input#deviceCPINumber {
             width:10%;
             vertical-align: middle;
             text-align: right;
@@ -747,6 +776,15 @@
                         </tr>
                         <tr>
                             <td class="left">
+                                Angle Tuning
+                            </td>
+                            <td class="right">
+                                <input id="deviceAngleTuningRange" type="range" min="-127" max="127" step="1">
+                                <input id="deviceAngleTuningNumber" type="number">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="left">
                                 Primary Button
                             </td>
                             <td class="right">
@@ -762,7 +800,7 @@
                             </td>
                             <td class="right">
                                 <input id="deviceCPIRange" type="range" min="50" max="20000" step="50">
-                                <input id="deviceCPIText" type="text">
+                                <input id="deviceCPINumber" type="number">
                             </td>
                         </tr>
                     </table>
@@ -898,13 +936,43 @@
     });
 
     // Update CPI text input field when slider changes
+    document.getElementById('deviceAngleTuningRange').addEventListener('input', function() {
+        document.getElementById('deviceAngleTuningNumber').value = this.value;
+    });
+
+    // Check bounds, round to nearest cpi_step and update CPI slider when text input field changes
+    document.getElementById('deviceAngleTuningNumber').addEventListener('change', function() {
+        var range = document.getElementById('deviceAngleTuningRange');
+        if (isNaN(this.value) || this.valueAsNumber < range.min) this.value = range.min;
+        if (this.valueAsNumber > range.max) this.value = range.max;
+        this.value = Math.round(this.valueAsNumber);
+        range.value = this.value;
+    });
+
+    const deviceAngleTuningRange = document.getElementById('deviceAngleTuningRange');
+    const deviceAngleTuningNumber = document.getElementById('deviceAngleTuningNumber');
+
+    deviceAngleTuningRange.addEventListener('wheel', function (e) {
+        e.preventDefault();
+
+        if (e.deltaY < 0) {
+            this.stepUp();
+        } else {
+            this.stepDown();
+        }
+
+        deviceAngleTuningNumber.value = this.value;
+        this.dispatchEvent(new Event('input', { bubbles: true }));
+    }, { passive: false });
+
+    // Update CPI text input field when slider changes
     document.getElementById('deviceCPIRange').addEventListener('input', function() {
-        document.getElementById('deviceCPIText').value = this.value;
+        document.getElementById('deviceCPINumber').value = this.value;
         config.cpi = Number(this.value) / cpi_step - 1;
     });
 
     // Check bounds, round to nearest cpi_step and update CPI slider when text input field changes
-    document.getElementById('deviceCPIText').addEventListener('change', function() {
+    document.getElementById('deviceCPINumber').addEventListener('change', function() {
         // Make sure cpi_step is minimum
         if (isNaN(this.value) || this.value < cpi_step) this.value = cpi_step;
         // Make sure cpi_max is maximum
@@ -914,6 +982,22 @@
             document.getElementById('deviceCPIRange').value = this.value;
             config.cpi = Number(this.value) / cpi_step - 1;
     });
+
+    const deviceCPIRange = document.getElementById('deviceCPIRange');
+    const deviceCPINumber = document.getElementById('deviceCPINumber');
+
+    deviceCPIRange.addEventListener('wheel', function (e) {
+        e.preventDefault();
+
+        if (e.deltaY < 0) {
+            this.stepUp();
+        } else {
+            this.stepDown();
+        }
+
+        deviceCPINumber.value = this.value;
+        this.dispatchEvent(new Event('input', { bubbles: true }));
+    }, { passive: false });
 
     async function apply() {
         deviceConfigWrite();
@@ -1029,7 +1113,7 @@
         deviceCPIRange.min = cpi_step;
         deviceCPIRange.max = cpi_max;
         deviceCPIRange.step = cpi_step;
-        document.getElementById('deviceCPIText').value = (config.cpi + 1) * cpi_step;
+        document.getElementById('deviceCPINumber').value = (config.cpi + 1) * cpi_step;
     }
 
     async function deviceReadVersion() {
