@@ -668,6 +668,40 @@
             position: relative;
         }
 
+        div#tipsContainer {
+            display:flex;
+            background-color: black;
+            width: 100%;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+            border: rgb(255,255,255,0.25);
+            border-style: solid;
+            border-width: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        div#tipsText {
+            background-color: black;
+            font-size: 12px;
+            font-style: italic;
+            color: #666;
+            width: 50%;
+            height: auto;
+            justify-content: center;
+            text-align:center;
+            border: rgb(255,255,255,0.25);
+            border-style: solid;
+            border-width: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+
         div#modal {
             background-color: rgb(0,0,0,0.75);
             width: 100%;
@@ -721,7 +755,7 @@
                             <td><br></td><td></td>
                         </tr>
                         <tr>
-                            <td class="left">
+                            <td class="left configOption">
                                 USB Speed
                             </td>
                             <td class="right">
@@ -732,7 +766,7 @@
                             </td>
                         </tr>
                         <tr id=rowPollingRateFullSpeed style="display: none;">
-                            <td class="left">
+                            <td class="left configOption">
                                 Polling Rate
                             </td>
                             <td class="right">
@@ -742,7 +776,7 @@
                             </td>
                         </tr>
                         <tr id=rowPollingRateHighSpeed>
-                            <td class="left">
+                            <td class="left configOption">
                                 Polling Rate
                             </td>
                             <td class="right">
@@ -755,7 +789,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="left">
+                            <td class="left configOption">
                                 Lift Off Distance
                             </td>
                             <td class="right">
@@ -764,7 +798,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="left">
+                            <td class="left configOption">
                                 Angle Snapping
                             </td>
                             <td class="right">
@@ -775,7 +809,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="left">
+                            <td class="left configOption">
                                 Angle Tuning
                             </td>
                             <td class="right">
@@ -784,7 +818,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="left">
+                            <td class="left configOption">
                                 Primary Button
                             </td>
                             <td class="right">
@@ -795,7 +829,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="left">
+                            <td class="left configOption">
                                 Sensitivity
                             </td>
                             <td class="right">
@@ -806,6 +840,11 @@
                     </table>
                     <button id="apply" onclick=apply()>Apply</button>
                     <button id="factoryReset" onclick="modalOpen('factory reset')">Factory Reset</button>
+                    <div id="tipsContainer">
+                        <div id="tipsText">
+                            Hover over configuration options to learn more about them...
+                        </div>
+                    </div>
                 </div>
                 <div id="modal">
                     <div id="modalDialogBox">
@@ -998,6 +1037,57 @@
         deviceCPINumber.value = this.value;
         this.dispatchEvent(new Event('input', { bubbles: true }));
     }, { passive: false });
+
+    const tipsText = document.getElementById('tipsText');
+    const defaultTipsText = tipsText.textContent;
+    let tipsTimer = null;
+
+
+    document.querySelectorAll('.configOption').forEach(td => {
+        td.addEventListener('mouseenter', () => {
+
+            clearTimeout(tipsTimer);
+
+            switch (td.textContent.trim()) {
+                case 'USB Speed':
+                    tipsText.textContent = "High-speed is recommended and supports polling rates 1000 Hz to 8000 Hz. Full-speed is useful with extra thin cables or if you are having issues with your mouse as it is a more robust signal.";
+                break;
+
+                case 'Polling Rate':
+                    tipsText.textContent = "For high-speed you can set between 1000 Hz and 8000 Hz. Note that some games do not like high polling rates and can drop frames. Set as high as you can without negative effects or set something like 1000 Hz if don't want to think about it.";
+                break;
+
+                case 'Lift Off Distance':
+                    tipsText.textContent = "Lift off distance controls how far off the surface the mouse stops detecting motion. You might need to increase this if you install taller skates.";
+                break;
+
+                case 'Angle Snapping':
+                    tipsText.textContent = "Helps force mouse movement into straighter lines.";
+                break;
+
+                case 'Angle Tuning':
+                    tipsText.textContent = "Rotates sensor -127 to +127 degrees.  Move your mouse side to side, if the cursor is not moving horizontal you can use this to adjust it to horizontal.";
+                break;
+
+                case 'Primary Button':
+                    tipsText.textContent = "Allows you to switch left and right mouse buttons.";
+                break;
+
+                case 'Sensitivity':
+                    tipsText.textContent = "Adjusts the cpi of the mouse sensor.";
+                break;
+
+                default:
+                    tipsText.textContent = '';
+                    break;
+            }
+        });
+        td.addEventListener('mouseleave', () => {
+            tipsTimer = setTimeout(() => {
+                tipsText.textContent = defaultTipsText;
+            }, 500);
+        });
+    });
 
     async function apply() {
         deviceConfigWrite();
